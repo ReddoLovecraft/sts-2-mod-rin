@@ -1,0 +1,13 @@
+{
+  "TH_RIN-INTEGRITY_POWER.title": "完整度",
+  "TH_RIN-INTEGRITY_POWER.description": "每次受到玩家伤害时，完整度会降低[blue]1%[/blue]。特别的，如果单次伤害超过自身最大生命的[blue]25%[/blue]或是被[gold]点燃[/gold]造成伤害，则改为降低[blue]5%[/blue]。",
+  "TH_RIN-INTEGRITY_POWER.smartDescription": "当前完整度：[blue]{Amount}[/blue]\n每次受到玩家伤害时，完整度会降低[blue]1%[/blue]。特别的，如果单次伤害超过自身最大生命的[blue]25%[/blue]或是被[gold]点燃[/gold]造成伤害，则改为降低[blue]5%[/blue]。",
+  "TH_RIN-WRAITH_POWER.title": "怨灵",
+  "TH_RIN-WRAITH_POWER.description": "每当你对敌人造成伤害时，消耗[blue]1[/blue]层并使得敌人额外失去[blue]4[/blue]点生命。",
+  "TH_RIN-WRAITH_POWER.smartDescription": "每当你对敌人造成伤害时，消耗[blue]1[/blue]层并使得敌人额外失去[blue]{Cards}[/blue]点生命。",
+  "TH_RIN-IGNITE_POWER.title": "点燃",
+  "TH_RIN-IGNITE_POWER.description": "在你的回合开始时，失去等同于层数的生命，然后将层数加[blue]1[/blue]。",
+  "TH_RIN-IGNITE_POWER.smartDescription": "在你的回合开始时，失去[blue]{Amount}[/blue]点生命，然后将层数加[blue]1[/blue]。"
+  
+  
+}

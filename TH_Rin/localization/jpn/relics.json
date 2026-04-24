@@ -1,0 +1,11 @@
+{
+  "TH_RIN-BARROW.title": "阿燐的猫车",
+  "TH_RIN-BARROW.description": "战斗开始时，生成等同于本遗物存储[gold]尸体[/gold]数量的[gold]怨灵[/gold]。\n每当敌人死亡时，存入其对应的[gold]尸体[/gold]。\n[gold]右键该遗物[/gold]可以查看你的所拥有的[gold]尸体[/gold]。",
+  "TH_RIN-BARROW.flavor": "阿燐用来装载尸体用的手推车，这恐怕是这个世上运载过最多尸体的手推车吧。",
+  "TH_RIN-BARROW.desc": "这些是你小推车中存储的全部[gold]尸体[/gold]。",
+  "TH_RIN-BARROW.confirm": "确认",
+  "TH_RIN-BARROW.cancel": "取消",
+  "TH_RIN-BARROW.confirmdelete": "确认丢弃这具[gold]尸体[/gold]吗？",
+  "TH_RIN-BARROW.delete": "丢弃"
+
+}

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl15w8tqqnw5y"]
+
+[ext_resource type="Texture2D" uid="uid://diui6jntyf0dw" path="res://TH_Rin/ArtWorks/Character/rin_icon.png" id="1_a4of4"]
+
+[node name="rinicon" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_a4of4")
+expand_mode = 1
+stretch_mode = 5

@@ -1,0 +1,8 @@
+{
+	"TH_RIN-STRIKE.title": "打击",
+	"TH_RIN-STRIKE.description": "造成{Damage:diff()}点伤害。",
+	"TH_RIN-DEFEND.title": "防御",
+	"TH_RIN-DEFEND.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
+	"TH_RIN-SLIME_CORPSE.title": " 史莱姆尸体",
+	"TH_RIN-SLIME_CORPSE.description": "每当你抽到[gold]状态牌[/gold]时，抽{Cards:diff()}张牌。"
+}

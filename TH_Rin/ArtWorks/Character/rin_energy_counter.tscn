@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://bhhrwwwmvfw3n"]
+
+[ext_resource type="Script" uid="uid://ccrpxderp2jk7" path="res://TH_Rin/ArtWorks/VFX/NRinEnergyCounter.cs" id="1_k51tk"]
+[ext_resource type="FontVariation" path="res://themes/kreon_bold_shared.tres" id="2_base_font"]
+[ext_resource type="Texture2D" uid="uid://cx1xvf0mvamca" path="res://TH_Rin/ArtWorks/VFX/RinEnergy.png" id="3_fxdbh"]
+[ext_resource type="Texture2D" uid="uid://csox8dw3j6mhc" path="res://TH_Rin/ArtWorks/VFX/RinEnergy2.png" id="4_2dcmw"]
+[ext_resource type="Texture2D" uid="uid://civdq6nqkp2ed" path="res://TH_Rin/ArtWorks/VFX/RinEnergy3.png" id="5_2dcmw"]
+[ext_resource type="Texture2D" uid="uid://da5py4n5cwcbj" path="res://TH_Rin/ArtWorks/VFX/RinEnergy4.png" id="5_qepsi"]
+[ext_resource type="PackedScene" path="res://TH_Rin/ArtWorks/Character/rin_energy_vfx_back.tscn" id="6_vfx_back"]
+[ext_resource type="PackedScene" path="res://TH_Rin/ArtWorks/Character/rin_energy_vfx_front.tscn" id="7_vfx_front"]
+[ext_resource type="Script" uid="uid://cpigwygw6wwvg" path="res://TH_Rin/ArtWorks/VFX/NRinMegaLabel.cs" id="mega_label_script"]
+
+[sub_resource type="FontVariation" id="FontVariation_kreon_bold_shared_font"]
+spacing_glyph = 2
+
+[node name="SakuyaEnergyCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("1_k51tk")
+
+[node name="EnergyVfxBack" parent="." instance=ExtResource("6_vfx_back")]
+unique_name_in_owner = true
+position = Vector2(96, 90)
+script = null
+
+[node name="Layers" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 192.0
+offset_bottom = 192.0
+
+[node name="Layer1" type="TextureRect" parent="Layers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_fxdbh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer3" type="TextureRect" parent="Layers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_2dcmw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RotationLayers" type="Control" parent="Layers"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -29.0
+offset_top = 8.0
+offset_right = 226.99997
+offset_bottom = 264.0
+
+[node name="Layer7" type="TextureRect" parent="Layers/RotationLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -75.0
+offset_right = -108.00003
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 5.704897
+pivot_offset = Vector2(255.505, 157.585)
+mouse_filter = 2
+texture = ExtResource("4_2dcmw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer6" type="TextureRect" parent="Layers/RotationLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -33.999985
+offset_right = -75.99997
+offset_bottom = -67.999985
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.0771844
+pivot_offset = Vector2(160.73, 120.36)
+mouse_filter = 2
+texture = ExtResource("4_2dcmw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer4" type="TextureRect" parent="Layers/RotationLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -18.999998
+offset_right = -17.99997
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.6040156
+pivot_offset = Vector2(111, 100)
+mouse_filter = 2
+texture = ExtResource("5_qepsi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Layer5" type="TextureRect" parent="Layers/RotationLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -98.99994
+offset_top = -60.99996
+offset_right = -104.99991
+offset_bottom = -66.99997
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5611947
+pivot_offset = Vector2(213.565, 142.795)
+mouse_filter = 2
+texture = ExtResource("4_2dcmw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EnergyVfxFront" parent="." instance=ExtResource("7_vfx_front")]
+unique_name_in_owner = true
+position = Vector2(96, 90)
+script = null
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 66.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.96862745)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.9043215, 0.29299667, 0.8206852, 0.7411765)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = SubResource("FontVariation_kreon_bold_shared_font")
+theme_override_font_sizes/font_size = 24
+text = "3/3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("mega_label_script")
+MinFontSize = 24
+MaxFontSize = 24
