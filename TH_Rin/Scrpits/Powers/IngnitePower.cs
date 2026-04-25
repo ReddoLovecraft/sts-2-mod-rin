@@ -20,13 +20,10 @@ namespace TH_Rin.Scrpits.Powers
 		public override string? CustomPackedIconPath => "res://TH_Rin/ArtWorks/Powers/IP32.png";
 		public override string? CustomBigIconPath => "res://TH_Rin/ArtWorks/Powers/IP64.png";
 		public IgnitePower() { }
-	   public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
-	{
-		if (side != base.Owner.Side)
+		public async Task TriggerEffect()
 		{
-			return;
-		}
-		    if(base.Owner.HasPower<IntegrityPower>())
+			this.Flash();
+			if(base.Owner.HasPower<IntegrityPower>()&&!Owner.HasPower<WildfireInJulyPower>())
 			{
               await Owner.GetPower<IntegrityPower>().TriggerLostMoreAmount(5);
 			}
@@ -39,6 +36,14 @@ namespace TH_Rin.Scrpits.Powers
 			{
 				await Cmd.CustomScaledWait(0.1f, 0.25f);
 			}
+		}
+	   public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+	{
+		if (side != base.Owner.Side)
+		{
+			return;
+		}
+		 await TriggerEffect();
 	}
 
 		public override Color GetHealthBarOverlayColor()

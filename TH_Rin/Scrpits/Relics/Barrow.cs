@@ -90,7 +90,7 @@ public class Barrow : CustomRelicModel,IRightCilckable
 		{
 			foreach(Creature creature in Owner.Creature.CombatState.HittableEnemies.ToList())
 			{
-				if(creature.Monster is TestSubject&&!creature.HasPower<IntegrityPower>()&&creature.HasPower<NemesisPower>())
+				if(creature.Monster is TestSubject&&!creature.HasPower<IntegrityPower>()&&creature.HasPower<MegaCrit.Sts2.Core.Models.Powers.NemesisPower>())
 				await PowerCmd.Apply<IntegrityPower>(creature,100,null,null);
 			}
 		}

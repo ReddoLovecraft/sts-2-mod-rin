@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using TH_Rin.Scripts.Main;
@@ -35,6 +36,26 @@ namespace TH_Rin.Scrpits.Powers
         {
             DynamicVars.Cards.BaseValue+=damage;
         }
+		public async Task TriggerExhasut(int value)
+		{
+			if(Owner.HasPower<NoDeclineSoulPower>())
+			{
+				return;
+			}
+			int FinalValue=Math.Min(value,this.Amount);
+			if(Owner.HasPower<UnceasingResentmentPower>())
+				await PowerCmd.Apply<WraithPower>(Owner,Owner.GetPowerAmount<UnceasingResentmentPower>(),Owner,null);
+			if(Owner.HasPower<CirclePower>())
+			    await PlayerCmd.GainEnergy(Owner.GetPowerAmount<CirclePower>(),Owner.Player);
+			if(Owner.HasPower<LycorisPower>())
+				await CreatureCmd.GainMaxHp(Owner,FinalValue*Owner.GetPowerAmount<LycorisPower>());
+			if(Owner.HasPower<PurePower>())
+			{
+				List<Soul> cards = Soul.Create(Owner.Player,Owner.GetPowerAmount<PurePower>()*FinalValue, base.CombatState).ToList();
+				CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+			}
+			await PowerCmd.ModifyAmount(this,-FinalValue,null,null);
+		}
         public WraithPower() { }
 
 		public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -62,14 +83,53 @@ namespace TH_Rin.Scrpits.Powers
         Flash();
         // 类似人魂灯特效，大概
         await NWraithOrbVfx.Play(base.Owner, target);
-        await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+		if(!Owner.HasPower<RelyOnPower>())
+        	{
+				await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+				if(target!=null&&target.IsAlive)
+				{
+					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);
+				}
+			}
+		else
+		{
+			 if(Owner.HasPower<StrengthPower>())
+				{
+					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(), ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+					if(target!=null&&target.IsAlive)
+					{
+					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(),null,null);
+					}
+				}
+			 else
+				{
+					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+					if(target!=null&&target.IsAlive)
+					{
+					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);
+					}
+				}
+		}
 		if(Owner.Player.GetRelic<Barrow>()!=null&&Owner.Player.GetRelic<Barrow>().CorpseCards.FindAll(x=>x is SoulNexusCorpse).Count>0)
 		{
 			List<Soul> cards = Soul.Create(base.Owner.Player, 1, base.CombatState).ToList();
 			CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
 		}
-		if(!Owner.HasPower<NoDeclineSoulPower>())
-			await PowerCmd.Decrement(this);
+			if(!Owner.HasPower<NoDeclineSoulPower>())
+			{
+				if(Owner.HasPower<UnceasingResentmentPower>())
+					await PowerCmd.Apply<WraithPower>(Owner,1,Owner,null);
+				if(Owner.HasPower<CirclePower>())
+			    	await PlayerCmd.GainEnergy(Owner.GetPowerAmount<CirclePower>(),Owner.Player);
+				if(Owner.HasPower<LycorisPower>())
+					await CreatureCmd.GainMaxHp(Owner,Owner.GetPowerAmount<LycorisPower>());
+				if(Owner.HasPower<PurePower>())
+				{
+				List<Soul> cards = Soul.Create(Owner.Player,Owner.GetPowerAmount<PurePower>(), base.CombatState).ToList();
+				CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+				}
+				await PowerCmd.Decrement(this);
+			}
         await Task.CompletedTask;
 	}
 	}

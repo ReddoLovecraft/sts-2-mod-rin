@@ -27,9 +27,6 @@ public class Refire : RinCardModel
 		if(!cardPlay.Target.HasPower<IgnitePower>())
 		await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
 		await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
-
-		
-	
 	}
 	protected override void OnUpgrade()
 	{

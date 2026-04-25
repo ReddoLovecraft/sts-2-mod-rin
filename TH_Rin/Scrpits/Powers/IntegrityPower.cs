@@ -38,7 +38,11 @@ namespace TH_Rin.Scrpits.Powers
 			select c;
 			foreach (Creature item in enumerable)
 			{
-			  Tools.AddCorpseToBarrow(item.Player,Tools.GetCorpseCard(Owner.Monster,item.Player,this.Amount,8));
+			  bool flag=item.HasPower<PreventRotPower>();
+			  if(!flag)
+			  	Tools.AddCorpseToBarrow(item.Player,Tools.GetCorpseCard(Owner.Monster,item.Player,this.Amount,8));
+			  else
+			 	Tools.AddCorpseToBarrow(item.Player,Tools.GetCorpseCard(Owner.Monster,item.Player,this.Amount,999,false));
 			}
 			// if(Owner.Monster is DecimillipedeSegment)
 			// {

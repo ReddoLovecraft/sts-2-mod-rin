@@ -1,6 +1,8 @@
 using BaseLib.Abstracts;
 using BaseLib.Patches.Content;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
+using TH_Rin.Scrpits.Powers;
 
 
 namespace TH_Rin.Scripts.Main
@@ -16,7 +18,7 @@ namespace TH_Rin.Scripts.Main
                 CustomContentDictionary.AddModel(GetType());
             }
         }
-
+        public bool IsFireCard=>ExtraHoverTips.Any(x=>x == HoverTipFactory.FromPower<IgnitePower>());
 
     }
   
