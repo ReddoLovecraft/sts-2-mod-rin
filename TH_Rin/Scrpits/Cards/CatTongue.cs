@@ -18,7 +18,7 @@ public class CatTongue : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3),new DynamicVar("Power", 4),];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3),new DynamicVar("Power", 5),];
 	public CatTongue() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}
@@ -36,7 +36,6 @@ public class CatTongue : RinCardModel
 	protected override void OnUpgrade()
 	{
 		DynamicVars.Cards.UpgradeValueBy(1);
-		DynamicVars["Power"].UpgradeValueBy(2);
 	}
 }
 

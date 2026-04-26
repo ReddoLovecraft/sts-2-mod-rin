@@ -29,7 +29,7 @@ public class AxebotCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 4 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 3 * GetMutilplier();
 	}
 	 public override async Task TriggerWhenCombatStart()
     {

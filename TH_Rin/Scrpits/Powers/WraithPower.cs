@@ -13,6 +13,8 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Saves;
+using MegaCrit.Sts2.Core.Settings;
 using MegaCrit.Sts2.Core.ValueProps;
 using TH_Rin.Scripts.Main;
 using TH_Rin.Scrpits.Cards;
@@ -82,11 +84,12 @@ namespace TH_Rin.Scrpits.Powers
 		}
         Flash();
         // 类似人魂灯特效，大概
+	    if	(SaveManager.Instance.PrefsSave.FastMode != FastModeType.Fast)
         await NWraithOrbVfx.Play(base.Owner, target);
 		if(!Owner.HasPower<RelyOnPower>())
         	{
 				await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
-				if(target!=null&&target.IsAlive)
+				if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 				{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);
 				}
@@ -96,7 +99,7 @@ namespace TH_Rin.Scrpits.Powers
 			 if(Owner.HasPower<StrengthPower>())
 				{
 					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(), ValueProp.Unblockable | ValueProp.Unpowered,null,null);
-					if(target!=null&&target.IsAlive)
+					if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 					{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(),null,null);
 					}
@@ -104,7 +107,7 @@ namespace TH_Rin.Scrpits.Powers
 			 else
 				{
 					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
-					if(target!=null&&target.IsAlive)
+					if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 					{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);
 					}

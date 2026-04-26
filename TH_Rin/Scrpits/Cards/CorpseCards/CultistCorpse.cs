@@ -29,7 +29,7 @@ public class CultistCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 6m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 5m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 	 public override async Task TriggerWhenCombatStart()

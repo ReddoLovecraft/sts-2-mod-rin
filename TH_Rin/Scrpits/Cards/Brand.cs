@@ -24,7 +24,7 @@ public class Brand : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-		await PowerCmd.Apply<BrandPower>(Owner.Creature,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+		await PowerCmd.Apply<BrandPower>(Owner.Creature,1,Owner.Creature,this);
 	}
 	protected override void OnUpgrade()
 	{

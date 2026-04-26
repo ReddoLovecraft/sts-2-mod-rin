@@ -37,7 +37,7 @@ public class TheObscureCorpse : CorpseCardModel
             }
 		foreach (CardModel item in PileType.Hand.GetPile(base.Owner).Cards)
 		{
-			item.EnergyCost.AddThisCombat(-this.DynamicVars.Cards.IntValue);
+			item.EnergyCost.AddThisTurn(-this.DynamicVars.Cards.IntValue);
 		}
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

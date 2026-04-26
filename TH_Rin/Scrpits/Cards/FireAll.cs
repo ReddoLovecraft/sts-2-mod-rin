@@ -60,7 +60,7 @@ public class FireAll : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(3);
+		DynamicVars.Cards.UpgradeValueBy(2);
 	}
 }
 

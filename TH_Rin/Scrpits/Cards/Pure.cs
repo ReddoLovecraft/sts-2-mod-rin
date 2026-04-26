@@ -19,7 +19,7 @@ public class Pure : RinCardModel
           HoverTipFactory.FromPower<WraithPower>(),
           HoverTipFactory.FromCard<Soul>()
         });
-	public Pure() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+	public Pure() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

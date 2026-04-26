@@ -19,7 +19,7 @@ public class EvilInvader : RinCardModel
           HoverTipFactory.FromPower<WraithPower>()
         });
 	protected override bool ShouldGlowGoldInternal => Owner.Creature.HasPower<WraithPower>();
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m,ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9m,ValueProp.Move)];
 	public EvilInvader() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}

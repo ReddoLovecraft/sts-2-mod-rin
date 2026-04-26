@@ -27,7 +27,7 @@ public class WaterfallGaintCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 15m * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 10m * GetMutilplier();
 	}
 	 public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

@@ -30,7 +30,7 @@ public class InfestedPrismCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Energy.BaseValue = 2m * GetMutilplier();
+		DynamicVars.Energy.BaseValue = 1m * GetMutilplier();
 	}
 	 public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{

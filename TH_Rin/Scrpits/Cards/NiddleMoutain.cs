@@ -17,9 +17,9 @@ using TH_Rin.Scrpits.Powers;
 namespace TH_Rin.Scrpits.Cards
 {
 [Pool(typeof(RinCardPool))]
-public class NiddleMountian : RinCardModel
+public class NiddleMountain : RinCardModel
 {
-	public NiddleMountian() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
+	public NiddleMountain() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -31,12 +31,12 @@ public class NiddleMountian : RinCardModel
 		{
 		    if(mos.IsAlive)
 			{
-				addtionRepeat+=Scripts.Main.Tools.GetDebuffTotalCount(mos);
-				addtionMuti+=Scripts.Main.Tools.GetDebuffKind(mos);
+				addtionRepeat+=Scripts.Main.Tools.GetDebuffKind(mos);
+				addtionMuti+=Scripts.Main.Tools.GetDebuffTotalCount(mos);
 			}
 		}
 		SfxCmd.Play("event:/sfx/characters/silent/silent_dagger_spray");
-		NDaggerSprayFlurryVfx.Create(base.Owner.Creature, new Color("rgba(243, 186, 154, 1)"), goingRight: true);
+		NDaggerSprayFlurryVfx.Create(base.Owner.Creature, new Color("#F3BA9A"), goingRight: true);
 		IReadOnlyList<Creature> hittableEnemies = base.CombatState.HittableEnemies;
 				foreach (Creature item in hittableEnemies)
 				{
@@ -50,7 +50,7 @@ public class NiddleMountian : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		this.EnergyCost.UpgradeBy(-1);
+		this.AddKeyword(CardKeyword.Retain);
 	}
 }
 

@@ -17,7 +17,7 @@ public class Spark : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(9)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
 	public Spark() : base(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 	{
 	}

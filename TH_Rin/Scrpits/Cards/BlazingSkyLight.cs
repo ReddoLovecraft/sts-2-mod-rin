@@ -19,8 +19,8 @@ public class BlazingSkyLight : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(6)];
-	public BlazingSkyLight() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(4)];
+	public BlazingSkyLight() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,7 +34,7 @@ public class BlazingSkyLight : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		this.EnergyCost.UpgradeBy(-1);
+		this.DynamicVars.Cards.UpgradeValueBy(2);
 	}
 }
 

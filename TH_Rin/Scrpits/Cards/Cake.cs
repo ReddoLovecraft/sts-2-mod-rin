@@ -14,6 +14,7 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(StatusCardPool))]
 public class Cake : RinCardModel
 {
+	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
  	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[1]
         {
           base.EnergyHoverTip

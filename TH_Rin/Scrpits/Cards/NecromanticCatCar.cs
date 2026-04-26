@@ -17,7 +17,7 @@ public class NecromanticCatCar : RinCardModel
         {
           HoverTipFactory.FromPower<WraithPower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m,ValueProp.Move),new CardsVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11m,ValueProp.Move),new CardsVar(2)];
 	public NecromanticCatCar() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}

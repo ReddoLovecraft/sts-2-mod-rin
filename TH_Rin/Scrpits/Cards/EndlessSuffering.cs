@@ -19,12 +19,13 @@ public class EndlessSuffering : RinCardModel
 {
 	public override bool GainsBlock => true;
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
- 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[1]
+ 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[2]
         {
-          HoverTipFactory.FromPower<WraithPower>()
+          HoverTipFactory.FromPower<WraithPower>(),
+          HoverTipFactory.FromPower<DemisePower>()
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4,ValueProp.Move)];
-	public EndlessSuffering() : base(4, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+	public EndlessSuffering() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

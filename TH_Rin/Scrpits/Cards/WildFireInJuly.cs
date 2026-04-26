@@ -11,14 +11,16 @@ using TH_Rin.Scrpits.Powers;
 namespace TH_Rin.Scrpits.Cards
 {
 [Pool(typeof(RinCardPool))]
-public class WildFireInJuly : RinCardModel
+public class WildfireInJuly : RinCardModel
 {
- 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[1]
+ 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[3]
         {
-          HoverTipFactory.FromPower<IgnitePower>()
+          HoverTipFactory.FromPower<IgnitePower>(),
+          HoverTipFactory.FromPower<IntegrityPower>(),
+         Patchoulib.Scrpits.Main.Tools.GetStaticKeyword("Corpse")
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
-	public WildFireInJuly() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+	public WildfireInJuly() : base(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

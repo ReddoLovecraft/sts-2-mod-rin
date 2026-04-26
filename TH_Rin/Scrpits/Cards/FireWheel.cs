@@ -27,7 +27,7 @@ public class FireWheel : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(13, ValueProp.Move),new CardsVar(13)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10, ValueProp.Move),new CardsVar(10)];
 	public FireWheel() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 	{
 	}
@@ -53,8 +53,8 @@ public class FireWheel : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Damage.UpgradeValueBy(4);
-		DynamicVars.Cards.UpgradeValueBy(4);
+		DynamicVars.Damage.UpgradeValueBy(3);
+		DynamicVars.Cards.UpgradeValueBy(3);
 	}
 }
 

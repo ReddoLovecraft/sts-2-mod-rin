@@ -26,7 +26,7 @@ public class StabbotCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 18 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 9 * GetMutilplier();
 	}
 	  public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

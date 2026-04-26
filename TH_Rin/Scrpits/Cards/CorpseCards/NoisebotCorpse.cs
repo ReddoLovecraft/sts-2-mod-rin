@@ -30,7 +30,7 @@ public class NoisebotCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 3 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 2 * GetMutilplier();
 	}
 	  public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

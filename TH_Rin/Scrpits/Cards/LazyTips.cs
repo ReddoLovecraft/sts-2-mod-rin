@@ -15,12 +15,14 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(EventCardPool))]
 public class LazyTips : RinCardModel
 {
- 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[2]
+ 	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[4]
         {
           HoverTipFactory.FromPower<SlowPower>(),
-          HoverTipFactory.FromPower<WeakPower>()
+          HoverTipFactory.FromPower<WeakPower>(),
+		  HoverTipFactory.FromKeyword(CardKeyword.Retain),
+		  base.EnergyHoverTip
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2),new EnergyVar(1)];
 	public LazyTips() : base(0, CardType.Skill, CardRarity.Event, TargetType.AllEnemies)
 	{
 	}

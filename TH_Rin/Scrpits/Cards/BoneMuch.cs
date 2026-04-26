@@ -19,11 +19,12 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class BoneMuch : RinCardModel
 {
+	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
  	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[1]
         {
           Patchoulib.Scrpits.Main.Tools.GetStaticKeyword("Corpse")
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8m,ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m,ValueProp.Move)];
 	public BoneMuch() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 	{
 	}
@@ -47,7 +48,7 @@ public class BoneMuch : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Damage.UpgradeValueBy(3m);
+		DynamicVars.Damage.UpgradeValueBy(2m);
 	}
 }
 

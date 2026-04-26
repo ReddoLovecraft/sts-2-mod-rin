@@ -49,8 +49,7 @@ public class SpleenEater : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Damage.UpgradeValueBy(2); 
-		DynamicVars.Cards.UpgradeValueBy(1); 
+		DynamicVars.Damage.UpgradeValueBy(3); 
 	}
 }
 

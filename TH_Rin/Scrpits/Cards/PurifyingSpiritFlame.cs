@@ -34,14 +34,14 @@ public class PurifyingSpiritFlame : RinCardModel
 			await CardCmd.Exhaust(choiceContext, cardModel);
 			if(cardModel.Type==CardType.Status||cardModel.Type==CardType.Curse)
 			{
-				await PowerCmd.Apply<IgnitePower>(Owner.Creature,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+				await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
 			}
 		}
-	    await PowerCmd.Apply<IgnitePower>(Owner.Creature,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+	    await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(3);
+		DynamicVars.Cards.UpgradeValueBy(2);
 	}
 }
 

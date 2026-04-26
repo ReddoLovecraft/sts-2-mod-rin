@@ -28,7 +28,7 @@ public class TwoTailedRatCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 10m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 8m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}	
 	public  override void TriggerWhenRemove()

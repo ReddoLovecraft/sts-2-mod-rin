@@ -26,14 +26,22 @@ public class DarkChireiden : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-		 IEnumerable<CardModel> c =[ModelDb.Card<RinKon>(), ModelDb.Card<Koishi>(), ModelDb.Card<Satori>()];
-		 List<CardModel> cards = new List<CardModel>();
-		  foreach (var item in c)
-		  {
-			if(IsUpgraded)
-			CardCmd.Upgrade(item);
-			cards.Add(Owner.Creature.CombatState.CreateCard(item, Owner.Creature.Player));
-		  }
+		 List<CardModel> cards = new List<CardModel>
+		 {
+			base.CombatState.CreateCard<RinKon>(base.Owner),
+			base.CombatState.CreateCard<Koishi>(base.Owner),
+			base.CombatState.CreateCard<Satori>(base.Owner)
+		 };
+		 if (base.IsUpgraded)
+		 {
+			foreach (CardModel item in cards)
+			{
+				if (item.IsUpgradable)
+				{
+					CardCmd.Upgrade(item);
+				}
+			}
+		 }
 		CardModel cardModel = await CardSelectCmd.FromChooseACardScreen(choiceContext, cards, base.Owner, canSkip: false);
 		if (cardModel != null)
 		{

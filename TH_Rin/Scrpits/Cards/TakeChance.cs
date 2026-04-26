@@ -21,7 +21,7 @@ public class TakeChance : RinCardModel
         });
 		protected override bool ShouldGlowGoldInternal => Success;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2),new EnergyVar(2)];
-	public TakeChance() : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+	public TakeChance() : base(0, CardType.Skill, CardRarity.Common, TargetType.None)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

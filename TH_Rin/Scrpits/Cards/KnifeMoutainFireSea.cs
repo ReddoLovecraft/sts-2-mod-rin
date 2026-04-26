@@ -19,8 +19,8 @@ public class KnifeMoutainFireSea : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m,ValueProp.Unpowered|ValueProp.Unblockable),new CardsVar(11)];
-	public KnifeMoutainFireSea() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7m,ValueProp.Unpowered|ValueProp.Unblockable),new CardsVar(7)];
+	public KnifeMoutainFireSea() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -30,8 +30,8 @@ public class KnifeMoutainFireSea : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(4);
-		DynamicVars.Damage.UpgradeValueBy(4m);
+		DynamicVars.Cards.UpgradeValueBy(2);
+		DynamicVars.Damage.UpgradeValueBy(2m);
 	}
 }
 

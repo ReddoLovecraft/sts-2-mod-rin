@@ -37,7 +37,6 @@ public class CatBeyondCorpse : RinCardModel
 	protected override void OnUpgrade()
 	{
 		this.EnergyCost.UpgradeBy(-1);
-		this.AddKeyword(CardKeyword.Retain);
 	}
 }
 

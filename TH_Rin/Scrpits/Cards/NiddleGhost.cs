@@ -24,7 +24,7 @@ public class NiddleGhost : RinCardModel
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 		await CreatureCmd.Damage(choiceContext,cardPlay.Target,7,ValueProp.Unblockable|ValueProp.Unpowered,Owner.Creature,null);
-		int amount=IsUpgraded?Tools.GetDebuffTotalCount(Owner.Creature):Tools.GetDebuffKind(Owner.Creature);
+		int amount=IsUpgraded?Tools.GetDebuffTotalCount(cardPlay.Target):Tools.GetDebuffKind(cardPlay.Target);
 		await PowerCmd.Apply<WraithPower>(Owner.Creature,amount,Owner.Creature,this);
 	}
 	protected override void OnUpgrade()

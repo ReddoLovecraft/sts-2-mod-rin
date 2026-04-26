@@ -28,7 +28,7 @@ public class ChaosFire : RinCardModel
           HoverTipFactory.FromPower<IgnitePower>()
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(4), new RepeatVar(3)];
-	public ChaosFire() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+	public ChaosFire() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

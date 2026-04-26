@@ -25,7 +25,7 @@ public class VineShamblerCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 6 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 3 * GetMutilplier();
 	}
 	  public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
   	{

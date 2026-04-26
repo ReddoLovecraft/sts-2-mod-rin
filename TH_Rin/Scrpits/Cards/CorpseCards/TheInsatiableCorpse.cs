@@ -38,7 +38,7 @@ public class TheInsatiableCorpse : CorpseCardModel
 		{
 			if(mos.MaxHp<=deadLine)
 			{
-			    await CreatureCmd.GainMaxHp(Owner.Creature,mos.MaxHp);
+			    await CreatureCmd.GainMaxHp(Owner.Creature,mos.MaxHp/10);
 				await CreatureCmd.Kill(mos);
 			}
 		}

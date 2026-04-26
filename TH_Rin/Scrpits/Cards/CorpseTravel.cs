@@ -33,6 +33,7 @@ public class CorpseTravel : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+		await PowerCmd.Apply<PreventRotPower>(enemies, 1, base.Owner.Creature, this);
 		foreach (Creature item in enemies)
 		{
 			NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
@@ -46,7 +47,7 @@ public class CorpseTravel : RinCardModel
 			.WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
 			.WithHitVfxSpawnedAtBase()
 			.Execute(choiceContext);
-		await PowerCmd.Apply<PreventRotPower>(enemies, 1, base.Owner.Creature, this);
+		
 	}
 	protected override void OnUpgrade()
 	{

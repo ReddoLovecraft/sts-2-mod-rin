@@ -27,7 +27,7 @@ public class GuardbotCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 15 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 8 * GetMutilplier();
 	}
  public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

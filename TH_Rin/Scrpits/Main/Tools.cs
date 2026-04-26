@@ -17,6 +17,8 @@ using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.TestSupport;
+using MegaCrit.Sts2.Core.HoverTips;
+using System.Reflection;
 using TH_Rin.Scrpits.Cards;
 using TH_Rin.Scrpits.Relics;
 
@@ -25,6 +27,128 @@ namespace TH_Rin.Scripts.Main
     public static class Tools
     {
         public static HashSet<(Type,Type)> _monsterToCorpseCard = new HashSet<(Type, Type)>();
+
+        public static bool HasPowerHoverTip<TPower>(IEnumerable<IHoverTip>? hoverTips) where TPower : PowerModel
+        {
+            if (hoverTips == null)
+            {
+                return false;
+            }
+
+            IHoverTip wanted = HoverTipFactory.FromPower<TPower>();
+            foreach (IHoverTip tip in hoverTips)
+            {
+                if (tip != null && Equals(tip, wanted))
+                {
+                    return true;
+                }
+            }
+
+            string wantedKey = GetHoverTipKey(wanted);
+            foreach (IHoverTip tip in hoverTips)
+            {
+                if (tip != null && GetHoverTipKey(tip) == wantedKey)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static string GetHoverTipKey(IHoverTip tip)
+        {
+            Type tipType = tip.GetType();
+
+            string? id =
+                TryGetStringMember(tip, tipType, "PowerId") ??
+                TryGetStringMember(tip, tipType, "PowerID") ??
+                TryGetStringMember(tip, tipType, "Id") ??
+                TryGetStringMember(tip, tipType, "KeywordId") ??
+                TryGetStringMember(tip, tipType, "Key");
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                return $"{tipType.FullName}|id:{id}";
+            }
+
+            Type? modelType =
+                TryGetTypeMember(tip, tipType, "PowerType") ??
+                TryGetTypeMember(tip, tipType, "PowerModelType") ??
+                TryGetTypeMember(tip, tipType, "ModelType");
+
+            if (modelType != null)
+            {
+                return $"{tipType.FullName}|type:{modelType.FullName}";
+            }
+
+            object? innerPower =
+                TryGetObjectMember(tip, tipType, "Power") ??
+                TryGetObjectMember(tip, tipType, "PowerModel") ??
+                TryGetObjectMember(tip, tipType, "Model");
+
+            if (innerPower != null)
+            {
+                object? innerId = TryGetObjectMember(innerPower, innerPower.GetType(), "Id");
+                if (innerId != null)
+                {
+                    return $"{tipType.FullName}|innerId:{innerId}";
+                }
+            }
+
+            return $"{tipType.FullName}|str:{tip}";
+        }
+
+        private static string? TryGetStringMember(object instance, Type instanceType, string memberName)
+        {
+            PropertyInfo? prop = instanceType.GetProperty(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (prop != null && prop.PropertyType == typeof(string) && prop.GetIndexParameters().Length == 0)
+            {
+                return (string?)prop.GetValue(instance);
+            }
+
+            FieldInfo? field = instanceType.GetField(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (field != null && field.FieldType == typeof(string))
+            {
+                return (string?)field.GetValue(instance);
+            }
+
+            return null;
+        }
+
+        private static Type? TryGetTypeMember(object instance, Type instanceType, string memberName)
+        {
+            PropertyInfo? prop = instanceType.GetProperty(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (prop != null && prop.PropertyType == typeof(Type) && prop.GetIndexParameters().Length == 0)
+            {
+                return (Type?)prop.GetValue(instance);
+            }
+
+            FieldInfo? field = instanceType.GetField(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (field != null && field.FieldType == typeof(Type))
+            {
+                return (Type?)field.GetValue(instance);
+            }
+
+            return null;
+        }
+
+        private static object? TryGetObjectMember(object instance, Type instanceType, string memberName)
+        {
+            PropertyInfo? prop = instanceType.GetProperty(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (prop != null && prop.GetIndexParameters().Length == 0)
+            {
+                return prop.GetValue(instance);
+            }
+
+            FieldInfo? field = instanceType.GetField(memberName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            if (field != null)
+            {
+                return field.GetValue(instance);
+            }
+
+            return null;
+        }
           public static int GetDebuffTotalCount(Creature target) 
         {
             int result = 0;

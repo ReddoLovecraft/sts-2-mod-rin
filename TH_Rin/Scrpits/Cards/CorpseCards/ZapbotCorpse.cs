@@ -26,7 +26,7 @@ public class ZapbotCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 14 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 7 * GetMutilplier();
 	}
 	public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

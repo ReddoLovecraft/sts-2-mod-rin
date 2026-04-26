@@ -44,6 +44,7 @@ namespace TH_Rin.Scrpits.Powers
                     Flash();
                     await PowerCmd.Apply<MultiplierDamagePower>(Owner, this.Amount, null, null);
                 }
+                await PowerCmd.Remove(this);
             }
         }
     }

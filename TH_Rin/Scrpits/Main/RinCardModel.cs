@@ -18,7 +18,7 @@ namespace TH_Rin.Scripts.Main
                 CustomContentDictionary.AddModel(GetType());
             }
         }
-        public bool IsFireCard=>ExtraHoverTips.Any(x=>x == HoverTipFactory.FromPower<IgnitePower>());
+        public bool IsFireCard => Tools.HasPowerHoverTip<IgnitePower>(ExtraHoverTips);
 
     }
   

@@ -143,11 +143,13 @@ public class Barrow : CustomRelicModel,IRightCilckable
 			await item.TriggerWhenCombatStart();
 		}
 	}
-		public override async Task AfterModifyingPowerAmountReceived(PowerModel power)
+		
+	public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
 	{
-		if(power is WraithPower && power.Owner==this.Owner.Creature&&power.Owner.Player.Character is RinCharacter rc)
+		if (power.Owner==this.Owner.Creature && !(amount <= 0m) && power is WraithPower &&power.Owner.Player.Character is RinCharacter rc)
 		{
-			rc.AddFireGeneratedCount(power.Amount);
+			rc.AddFireGeneratedCount((int)amount);
+			InvokeDisplayAmountChanged();
 		}
 	}
 	public override async Task AfterCombatEnd(CombatRoom room)

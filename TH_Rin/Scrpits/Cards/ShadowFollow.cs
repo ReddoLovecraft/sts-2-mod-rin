@@ -25,7 +25,8 @@ public class ShadowFollow : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		RemoveKeyword(CardKeyword.Exhaust);
+		this.RemoveKeyword(CardKeyword.Ethereal);
+		this.EnergyCost.UpgradeBy(-1);
 	}
 }
 

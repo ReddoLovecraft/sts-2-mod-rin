@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl4uscytp52kl"
-path="res://.godot/imported/TH_RIN-DEVIL_SOUL_REBRON.png-25081695d477311d3474e222f43b44ed.ctex"
+uid="uid://bxhh7y4ipmxtk"
+path="res://.godot/imported/TH_RIN-NIDDLE_MOUNTAIN.png-823707b46047219fc1750d2093193259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://TH_Rin/ArtWorks/Cards/TH_RIN-DEVIL_SOUL_REBRON.png"
-dest_files=["res://.godot/imported/TH_RIN-DEVIL_SOUL_REBRON.png-25081695d477311d3474e222f43b44ed.ctex"]
+source_file="res://TH_Rin/ArtWorks/Cards/TH_RIN-NIDDLE_MOUNTAIN.png"
+dest_files=["res://.godot/imported/TH_RIN-NIDDLE_MOUNTAIN.png-823707b46047219fc1750d2093193259.ctex"]
 
 [params]
 

@@ -27,7 +27,7 @@ public class PunchConstructCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 16m * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 8m * GetMutilplier();
 	}
 		 public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {

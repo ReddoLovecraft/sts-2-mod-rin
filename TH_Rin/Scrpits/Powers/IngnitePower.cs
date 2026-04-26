@@ -20,10 +20,23 @@ namespace TH_Rin.Scrpits.Powers
 		public override string? CustomPackedIconPath => "res://TH_Rin/ArtWorks/Powers/IP32.png";
 		public override string? CustomBigIconPath => "res://TH_Rin/ArtWorks/Powers/IP64.png";
 		public IgnitePower() { }
+		public bool hasWildfireInJulyPower ()
+		{
+			foreach(Creature creature in base.Owner.CombatState.Creatures)
+			{
+				if(creature.IsAlive&&creature.HasPower<WildfireInJulyPower>())
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 		public async Task TriggerEffect()
 		{
 			this.Flash();
-			if(base.Owner.HasPower<IntegrityPower>()&&!Owner.HasPower<WildfireInJulyPower>())
+
+			if(base.Owner.HasPower<IntegrityPower>()&&!hasWildfireInJulyPower())
 			{
               await Owner.GetPower<IntegrityPower>().TriggerLostMoreAmount(5);
 			}

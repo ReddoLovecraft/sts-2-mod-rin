@@ -25,7 +25,7 @@ public class Koishi : RinCardModel
 		  HoverTipFactory.FromCard<GiantRock>(),
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(4)];
-	public Koishi() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+	public Koishi() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

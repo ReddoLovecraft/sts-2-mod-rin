@@ -21,7 +21,7 @@ public class HellishWraitsUnleashed : RinCardModel
           HoverTipFactory.FromPower<WraithPower>()
         });
 	protected override bool ShouldGlowGoldInternal => Owner.Creature.HasPower<WraithPower>();
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new DamageVar(10m,ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new DamageVar(4m,ValueProp.Move)];
 	public HellishWraitsUnleashed() : base(2, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 	{
 	}

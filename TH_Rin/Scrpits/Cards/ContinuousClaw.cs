@@ -17,6 +17,8 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class ContinuousClaw : RinCardModel
 {
+	protected override bool ShouldGlowGoldInternal => WasLastCardPlayedAttack;
+
  	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[1]
         {
           base.EnergyHoverTip
@@ -34,7 +36,7 @@ public class ContinuousClaw : RinCardModel
 		}
 	}
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(2),new DamageVar(12,ValueProp.Move)];
-	public ContinuousClaw() : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+	public ContinuousClaw() : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

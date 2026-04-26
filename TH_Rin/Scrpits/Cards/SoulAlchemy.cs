@@ -23,6 +23,7 @@ public class SoulAlchemy : RinCardModel
            HoverTipFactory.FromPower<WraithPower>(),
 		   HoverTipFactory.FromPotion<GhostInAJar>()
         });
+	  protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(6)];
 	protected override bool IsPlayable => Owner.Creature.GetPowerAmount<WraithPower>()>5;
 	public SoulAlchemy() : base(1, CardType.Skill, CardRarity.Rare, TargetType.None)
 	{

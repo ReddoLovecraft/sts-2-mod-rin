@@ -22,7 +22,7 @@ public class SlimeCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 2m * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 1m * GetMutilplier();
 	}
 	public override async Task AfterCardDrawnEarly(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
 	{

@@ -19,7 +19,7 @@ public class ZombieFairy : RinCardModel
         {
           HoverTipFactory.FromPower<WraithPower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7m,ValueProp.Move),new CardsVar(2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(4m,ValueProp.Move),new CardsVar(2)];
 	public ZombieFairy() : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 	{
 	}
@@ -31,7 +31,7 @@ public class ZombieFairy : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Block.UpgradeValueBy(3);
+		DynamicVars.Block.UpgradeValueBy(2);
 	}
 }
 

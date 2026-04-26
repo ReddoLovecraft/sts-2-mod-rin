@@ -27,7 +27,7 @@ public class LivingShieldCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 25 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 12 * GetMutilplier();
 	}
 	public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

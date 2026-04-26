@@ -27,7 +27,7 @@ public class GhostTown : RinCardModel
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 		int add=Owner.HasPower<WraithPower>()?Owner.Creature.GetPowerAmount<WraithPower>():0;
-		await PowerCmd.Apply<WraithPower>(Owner.Creature,2,Owner.Creature,this);
+		await PowerCmd.Apply<WraithPower>(Owner.Creature,1,Owner.Creature,this);
 		for(int i=0;i<this.DynamicVars.Cards.IntValue;i++)
 			await CreatureCmd.GainBlock(Owner.Creature,new BlockVar(this.DynamicVars.Block.IntValue+add,ValueProp.Move),cardPlay);
 	}

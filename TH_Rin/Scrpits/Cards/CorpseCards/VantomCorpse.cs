@@ -31,7 +31,7 @@ public class VantomCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue =10m * GetMutilplier();
+		DynamicVars.Cards.BaseValue =9m * GetMutilplier();
 	}
  	public override async Task TriggerWhenCombatStart()
         {

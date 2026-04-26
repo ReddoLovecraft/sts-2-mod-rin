@@ -32,27 +32,20 @@ namespace TH_Rin.Scrpits.Powers
         public override string? CustomPackedIconPath => "res://TH_Rin/ArtWorks/Powers/TCP32.png";
         public override string? CustomBigIconPath => "res://TH_Rin/ArtWorks/Powers/TCP64.png";
         public ThiefCatPower() { }
-       public override bool TryModifyRewards(Player player, List<Reward> rewards, AbstractRoom? room)
-	    {
-		if (player != base.Owner.Player)
-		{
-			return false;
-		}
-		if (room == null)
-		{
-			return false;
-		}
-        if (room.RoomType == RoomType.Elite||room.RoomType == RoomType.Boss)
+        public override Task AfterCombatEnd(CombatRoom room)
+	{
+		room.AddExtraReward(base.Owner.Player, new GoldReward(base.Amount, base.Owner.Player));
+         if (room.RoomType == RoomType.Elite||room.RoomType == RoomType.Boss)
         {
-            rewards.Add(new RelicReward(player));
-            rewards.Add(new CardReward(CardCreationOptions.ForRoom(base.Owner.Player, RoomType.Boss), 3, player));
-            return true;
+            room.AddExtraReward( base.Owner.Player,new RelicReward(Owner.Player));
+            room.AddExtraReward( base.Owner.Player,new CardReward(CardCreationOptions.ForRoom(base.Owner.Player, RoomType.Boss), 3, base.Owner.Player));
+            
         }
-        else
+        else if (room.RoomType == RoomType.Monster)
         {
-            rewards.Add(new CardReward(CardCreationOptions.ForRoom(base.Owner.Player, RoomType.Monster), 3, player));
-            return true;
+            room.AddExtraReward( base.Owner.Player,new CardReward(CardCreationOptions.ForRoom(base.Owner.Player, RoomType.Monster), 3, base.Owner.Player));  
         }
-	    }
+		return Task.CompletedTask;
+	}
     }
 }

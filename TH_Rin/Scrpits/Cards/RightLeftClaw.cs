@@ -15,7 +15,7 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class RightLeftClaw : RinCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5,ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5,ValueProp.Move),new CardsVar(2)];
 	public RightLeftClaw() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 	{
 	}

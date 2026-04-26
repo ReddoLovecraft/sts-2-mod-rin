@@ -30,7 +30,7 @@ public class ChomperCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 6 * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 3 * GetMutilplier();
 	}
 	public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

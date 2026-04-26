@@ -34,9 +34,9 @@ public class Focus : RinCardModel
 		{
 			await PowerCmd.Remove<ArtifactPower>(cardPlay.Target);
 		}
-		await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars["Power"].IntValue,Owner.Creature,this);
-		await PowerCmd.Apply<WeakPower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
-		await PowerCmd.Apply<VulnerablePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+		await PowerCmd.Apply<IgnitePower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+		await PowerCmd.Apply<WeakPower>(cardPlay.Target,this.DynamicVars["Power"].IntValue,Owner.Creature,this);
+		await PowerCmd.Apply<VulnerablePower>(cardPlay.Target,this.DynamicVars["Power"].IntValue,Owner.Creature,this);
 	}
 	protected override void OnUpgrade()
 	{

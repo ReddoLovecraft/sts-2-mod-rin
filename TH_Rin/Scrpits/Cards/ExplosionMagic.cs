@@ -19,7 +19,7 @@ public class ExplosionMagic : RinCardModel
         {
           HoverTipFactory.FromPower<IgnitePower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3),  new DynamicVar("Power", 35)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3),  new DynamicVar("Power", 30)];
 	public ExplosionMagic() : base(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
 	{
 	}
@@ -30,7 +30,7 @@ public class ExplosionMagic : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars["Power"].UpgradeValueBy(15);
+		DynamicVars["Power"].UpgradeValueBy(10);
 	}
 }
 

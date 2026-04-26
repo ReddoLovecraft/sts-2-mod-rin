@@ -16,7 +16,7 @@ public class Nemesis : RinCardModel
 
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10m,ValueProp.Move),new CardsVar(2)];
-	public Nemesis() : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+	public Nemesis() : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

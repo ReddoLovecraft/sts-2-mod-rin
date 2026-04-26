@@ -17,7 +17,7 @@ namespace TH_Rin.Scrpits.Cards
 public class PoisedToStrike : RinCardModel
 {
  	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(6),new DamageVar(12m,ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(5),new DamageVar(10m,ValueProp.Move)];
 	public PoisedToStrike() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}
@@ -38,7 +38,7 @@ public class PoisedToStrike : RinCardModel
          {
             if(c==this)
             {
-              this.DynamicVars.Damage.UpgradeValueBy(6m);
+              this.DynamicVars.Damage.UpgradeValueBy(5m);
             }
          }
 		

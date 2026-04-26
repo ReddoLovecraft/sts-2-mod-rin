@@ -32,7 +32,7 @@ public class MechaKnightCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 30m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 12m * GetMutilplier();
 		DynamicVars.HpLoss.BaseValue = 3m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}	

@@ -19,7 +19,7 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class CleanTable : RinCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10, ValueProp.Move),new CardsVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10, ValueProp.Move),new CardsVar(2)];
 	public CleanTable() : base(2, CardType.Attack, CardRarity.Common, TargetType.AllAllies)
 	{
 	}

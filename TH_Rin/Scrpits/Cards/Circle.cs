@@ -19,7 +19,7 @@ public class Circle : RinCardModel
           HoverTipFactory.FromPower<WraithPower>(),
 		  base.EnergyHoverTip
         });
-		 protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
+		 protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new EnergyVar(1)];
 	public Circle() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 	{
 	}
@@ -31,6 +31,7 @@ public class Circle : RinCardModel
 	protected override void OnUpgrade()
 	{
 		this.DynamicVars.Cards.UpgradeValueBy(1);
+		this.DynamicVars.Energy.UpgradeValueBy(1);
 	}
 }
 

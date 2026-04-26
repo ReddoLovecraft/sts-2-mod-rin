@@ -31,7 +31,7 @@ public class FossilStalkerCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.Cards.BaseValue = 3m* GetMutilplier();
+		DynamicVars.Cards.BaseValue = 2m* GetMutilplier();
 	}
     public override async Task AfterAttack(AttackCommand command)
 	{

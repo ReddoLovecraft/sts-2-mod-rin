@@ -32,7 +32,7 @@ public class HauntedShipCorpse : CorpseCardModel
 	protected override void RefreshCorpseVars()
 	{
 		DynamicVars["Power"].BaseValue = 2m * GetMutilplier();
-		DynamicVars.Cards.BaseValue = 250m * GetMutilplier();
+		DynamicVars.Cards.BaseValue = 200m * GetMutilplier();
 	}
 	 public override async Task TriggerWhenCombatStart()
         {

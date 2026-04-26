@@ -31,7 +31,7 @@ public class RocketCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars.HpLoss.BaseValue = 35m * GetMutilplier();
+		DynamicVars.HpLoss.BaseValue = 18m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 		 public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)

@@ -34,8 +34,8 @@ public class CrusherCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 2m * GetMutilplier();
-		DynamicVars.HpLoss.BaseValue = 18m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 1m * GetMutilplier();
+		DynamicVars.HpLoss.BaseValue = 9m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 		public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)

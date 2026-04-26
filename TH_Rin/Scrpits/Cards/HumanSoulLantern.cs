@@ -20,7 +20,7 @@ public class HumanSoulLantern : RinCardModel
           base.EnergyHoverTip
         });
 	protected override bool ShouldGlowGoldInternal => Owner.Creature.HasPower<WraithPower>();
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new EnergyVar(1),new HpLossVar(10)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new EnergyVar(1),new HpLossVar(8)];
 	public HumanSoulLantern() : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}

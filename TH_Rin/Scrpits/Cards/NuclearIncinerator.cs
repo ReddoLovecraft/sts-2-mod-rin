@@ -19,7 +19,7 @@ public class NuclearIncinerator : RinCardModel
           HoverTipFactory.FromCard<Burn>(),
 		  base.EnergyHoverTip
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new EnergyVar(1)];
 	public NuclearIncinerator() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 	{
 	}

@@ -29,12 +29,12 @@ namespace TH_Rin.Scrpits.Powers
         public override string? CustomBigIconPath => "res://TH_Rin/ArtWorks/Powers/MFP64.png";
         protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<IgnitePower>()];
         public MdFormPower() { }
-        private int hitCount=0;
+        
         public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	    {
 		    if (target == base.Owner && dealer != null &&dealer!=base.Owner&& (props.IsPoweredAttack_() ))
 		    {
-			 hitCount++;
+                await PowerCmd.Apply<MultiplierDamagePower>(base.Owner, 2, null, null);
 		    }
 	    }
         public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
@@ -49,8 +49,7 @@ namespace TH_Rin.Scrpits.Powers
             {
                 await CreatureCmd.Kill(this.Owner);
             }
-            await PowerCmd.Apply<MultiplierDamagePower>(base.Owner, hitCount*2, null, null);
-            hitCount = 0;
+            
         }
     }
 

@@ -36,9 +36,9 @@ public class BowlbugCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 16m * GetMutilplier();
-		DynamicVars.Energy.BaseValue = 3m * GetMutilplier();
-		DynamicVars.HpLoss.BaseValue = 8m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 8m * GetMutilplier();
+		DynamicVars.Energy.BaseValue = 2m * GetMutilplier();
+		DynamicVars.HpLoss.BaseValue = 4m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 	public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)

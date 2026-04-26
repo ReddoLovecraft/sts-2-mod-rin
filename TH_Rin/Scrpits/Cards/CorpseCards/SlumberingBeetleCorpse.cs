@@ -29,7 +29,7 @@ public class SlumberingBeetleCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 18m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 15m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 	 public override async Task TriggerWhenCombatStart()

@@ -19,7 +19,7 @@ public class PhantomBreathTechnique : RinCardModel
         {
           HoverTipFactory.FromPower<EnragePower>()
         });
-  	protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
+  	protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
 	public PhantomBreathTechnique() : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 	{
 	}
@@ -30,7 +30,7 @@ public class PhantomBreathTechnique : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(2);
+		DynamicVars.Cards.UpgradeValueBy(1);
 	}
 }
 

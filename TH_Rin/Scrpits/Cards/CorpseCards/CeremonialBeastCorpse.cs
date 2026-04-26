@@ -30,7 +30,7 @@ public class CeremonialBeastCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 4m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 3m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 	public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)

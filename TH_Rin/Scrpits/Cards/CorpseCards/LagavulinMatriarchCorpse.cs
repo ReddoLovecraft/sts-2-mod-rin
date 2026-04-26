@@ -32,7 +32,7 @@ public class LagavulinMatriarchCorpse : CorpseCardModel
 	}
 	protected override void RefreshCorpseVars()
 	{
-		DynamicVars["Power"].BaseValue = 4m * GetMutilplier();
+		DynamicVars["Power"].BaseValue = 2m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
 		 public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)

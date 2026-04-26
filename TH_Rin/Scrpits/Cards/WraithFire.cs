@@ -45,13 +45,15 @@ public class WraithFire : RinCardModel
 	{
 		if (card == this)
 		{
-			Creature creature = base.Owner.RunState.Rng.CombatTargets.NextItem(base.Owner.Creature.CombatState.HittableEnemies);
-			if (creature != null)
+			 foreach(Creature mos in Owner.Creature.CombatState.HittableEnemies)
+		 {
+			if(mos.IsAlive)
 			{
 				await Cmd.Wait(0.25f);
 				int cnt=((RinCharacter)Owner.Character).FireGeneratedCount();
-				await PowerCmd.Apply<IgnitePower>(creature, cnt, Owner.Creature,this);
+				await PowerCmd.Apply<IgnitePower>(mos, cnt, Owner.Creature,this);
 			}
+		}
 		}
 	}
 	

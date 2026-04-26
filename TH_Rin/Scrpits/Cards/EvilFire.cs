@@ -20,7 +20,7 @@ public class EvilFire : RinCardModel
           HoverTipFactory.FromPower<WeakPower>(),
           HoverTipFactory.FromPower<VulnerablePower>()
         });
-  protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1),new DynamicVar("Power",6)];
+  protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2),new DynamicVar("Power",5)];
 	public EvilFire() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}
@@ -33,8 +33,7 @@ public class EvilFire : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(1);
-		DynamicVars["Power"].UpgradeValueBy(1);
+		DynamicVars["Power"].UpgradeValueBy(2);
 	}
 }
 

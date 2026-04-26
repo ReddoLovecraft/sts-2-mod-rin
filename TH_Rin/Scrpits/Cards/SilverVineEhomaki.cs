@@ -20,7 +20,7 @@ public class SilverVineEhomaki : RinCardModel
 		  base.EnergyHoverTip
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3),new EnergyVar(2)];
-	public SilverVineEhomaki() : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+	public SilverVineEhomaki() : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

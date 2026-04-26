@@ -31,7 +31,6 @@ public class VigorBurst : RinCardModel
 	protected override void OnUpgrade()
 	{
 		DynamicVars.Cards.UpgradeValueBy(1);
-		DynamicVars["Power"].UpgradeValueBy(2);
 	}
 }
 
