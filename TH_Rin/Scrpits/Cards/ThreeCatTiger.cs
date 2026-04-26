@@ -33,7 +33,7 @@ public class ThreeCatTiger : RinCardModel
 		}
 		else
 		{
-			await PowerCmd.Apply<StrengthPower>(cardPlay.Target,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
+			await PowerCmd.Apply<StrengthPower>(Owner.Creature,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
 		}
 	}
 	protected override void OnUpgrade()

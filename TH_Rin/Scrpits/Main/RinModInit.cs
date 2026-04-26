@@ -173,38 +173,108 @@ namespace TH_Rin.Scripts.Main
 		}
 	}
 	}
-	[HarmonyPatch(typeof(NAudioManager), "PlayOneShot", [typeof(string), typeof(System.Collections.Generic.Dictionary<string, float>), typeof(float)])]
-	public static class ModSfxWithParamsPatch
+	[HarmonyPatch]
+	public static class ModSfxPatch
 	{
-		static bool Prefix(string path, System.Collections.Generic.Dictionary<string, float> parameters, float volume)
+		static IEnumerable<MethodBase> TargetMethods()
 		{
-			if (path.StartsWith("mod_sfx://"))
-			{
-				try
+			return typeof(NAudioManager)
+				.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+				.Where(m =>
 				{
-					string resPath = "res://" + path.Substring(10);
-					var stream = ResourceLoader.Load<AudioStream>(resPath);
-					if (stream != null)
+					if (m.Name != "PlayOneShot")
 					{
-						var player = new AudioStreamPlayer();
-						player.Stream = stream;
-						player.Bus = "SFX";
-						float master = SaveManager.Instance.SettingsSave.VolumeMaster;
-						float sfx = SaveManager.Instance.SettingsSave.VolumeSfx;
-						float finalVol = volume * Mathf.Pow(master, 2f) * Mathf.Pow(sfx, 2f);
-						player.VolumeDb = Mathf.LinearToDb(Mathf.Max(0.0001f, finalVol));
-						NGame.Instance.AddChild(player);
-						player.Play();
-						player.Connect("finished", Callable.From(player.QueueFree));
+						return false;
+					}
+
+					ParameterInfo[] ps = m.GetParameters();
+					return ps.Length >= 1 && ps[0].ParameterType == typeof(string);
+				});
+		}
+
+		static bool Prefix(MethodBase __originalMethod, object[] __args)
+		{
+			if (__args.Length < 1 || __args[0] is not string path || !path.StartsWith("mod_sfx://"))
+			{
+				return true;
+			}
+
+			float volume = 1f;
+			ParameterInfo[] ps = __originalMethod.GetParameters();
+			for (int i = 1; i < __args.Length && i < ps.Length; i++)
+			{
+				if (__args[i] is float f && ps[i].ParameterType == typeof(float) && ps[i].Name != null && ps[i].Name.Contains("volume", StringComparison.OrdinalIgnoreCase))
+				{
+					volume = f;
+					break;
+				}
+			}
+			if (volume == 1f)
+			{
+				for (int i = 1; i < __args.Length; i++)
+				{
+					if (__args[i] is float f)
+					{
+						volume = f;
 					}
 				}
-				catch (System.Exception e)
-				{
-					Log.Error($"Failed to play mod sfx: {path}. Error: {e.Message}");
-				}
-				return false;
 			}
-			return true;
+
+			try
+			{
+				PlayModSfx(path, volume);
+			}
+			catch (System.Exception e)
+			{
+				Log.Error($"Failed to play mod sfx: {path}. Error: {e.Message}");
+			}
+
+			return false;
+		}
+
+		private static void PlayModSfx(string path, float volume)
+		{
+			string resPath = "res://" + path.Substring("mod_sfx://".Length);
+			AudioStream? stream = ResourceLoader.Load<AudioStream>(resPath);
+			if (stream == null)
+			{
+				return;
+			}
+
+			var player = new AudioStreamPlayer();
+			player.Stream = stream;
+			player.Bus = FindFirstExistingBus(["SFX", "Sfx", "SoundEffects", "SE", "Master"]);
+
+			float master = SaveManager.Instance.SettingsSave.VolumeMaster;
+			float sfx = SaveManager.Instance.SettingsSave.VolumeSfx;
+			float finalVol = volume * Mathf.Pow(master, 2f) * Mathf.Pow(sfx, 2f);
+			player.VolumeDb = Mathf.LinearToDb(Mathf.Max(0.0001f, finalVol));
+
+			if (NGame.Instance != null)
+			{
+				NGame.Instance.AddChild(player);
+			}
+			else
+			{
+				Log.Error($"TH_Rin mod_sfx can't play because NGame.Instance is null. Path: {path}");
+				player.QueueFree();
+				return;
+			}
+
+			player.Play();
+			player.Connect("finished", Callable.From(player.QueueFree));
+		}
+
+		private static string FindFirstExistingBus(IEnumerable<string> candidates)
+		{
+			foreach (string bus in candidates)
+			{
+				if (AudioServer.GetBusIndex(bus) >= 0)
+				{
+					return bus;
+				}
+			}
+			return "Master";
 		}
 	}
 }

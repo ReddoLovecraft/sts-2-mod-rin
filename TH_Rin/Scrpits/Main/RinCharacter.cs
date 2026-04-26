@@ -88,7 +88,7 @@ namespace TH_Rin.Scripts.Main
 			AnimState animState2 = new AnimState("Cast");
 			AnimState animState3 = new AnimState("Attack");
 			AnimState animState4 = new AnimState("Hit");
-			AnimState state = new AnimState("Die");
+			AnimState state = new AnimState("die");
 			AnimState animState5 = new AnimState("relaxed_loop", isLooping: true);
 			animState2.NextState = animState;
 			animState3.NextState = animState;
@@ -96,7 +96,7 @@ namespace TH_Rin.Scripts.Main
 			animState5.AddBranch("Idle", animState);
 			CreatureAnimator creatureAnimator = new CreatureAnimator(animState, controller);
 			creatureAnimator.AddAnyState("Idle", animState);
-			creatureAnimator.AddAnyState("Die", state);
+			creatureAnimator.AddAnyState("Dead", state);
 			creatureAnimator.AddAnyState("Hit", animState4);
 			creatureAnimator.AddAnyState("Attack", animState3);
 			creatureAnimator.AddAnyState("Cast", animState2);
