@@ -22,7 +22,7 @@ public static class RelicInventoryRightClickPatch
 		{
 			if (e is InputEventMouseButton { ButtonIndex: MouseButton.Right, Pressed: true })
 			{
-				if (relic is Barrow barrow)
+				if (relic is IBarrowLike barrow)
 				{
 					barrow.OpenCorpseScreen();
 				}

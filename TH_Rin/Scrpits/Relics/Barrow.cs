@@ -37,8 +37,15 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace TH_Rin.Scrpits.Relics
 {
+public interface IBarrowLike
+{
+	List<CorpseCardModel> CorpseCards { get; }
+	void updateDesc();
+	void OpenCorpseScreen();
+}
+
 [Pool(typeof(RinRelicPool))]
-public class Barrow : CustomRelicModel,IRightCilckable
+public class Barrow : CustomRelicModel,IRightCilckable,IBarrowLike
 {
 	    protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[5]
         {
@@ -294,7 +301,7 @@ public class Barrow : CustomRelicModel,IRightCilckable
 			return _corpseCards.Count;
 		}
 	}
-    public override RelicRarity Rarity => RelicRarity.Starter;
+    public override RelicRarity Rarity => RelicRarity.Ancient;
 	public override string PackedIconPath => $"res://TH_Rin/ArtWorks/Relics/{Id.Entry}.png";
     protected override string PackedIconOutlinePath => $"res://TH_Rin/ArtWorks/Relics/Outlines/{Id.Entry}.png";
     protected override string BigIconPath => $"res://TH_Rin/ArtWorks/Relics/{Id.Entry}.png";

@@ -71,7 +71,7 @@ namespace TH_Rin.Scripts.Main
 
 		// 初始遗物
 		public override IReadOnlyList<RelicModel> StartingRelics => [
-			ModelDb.Relic<Barrow>()
+			ModelDb.Relic<BasicBarrow>()
 	];
 
 		// 攻击建筑师的攻击特效列表
@@ -88,7 +88,7 @@ namespace TH_Rin.Scripts.Main
 			AnimState animState2 = new AnimState("Cast");
 			AnimState animState3 = new AnimState("Attack");
 			AnimState animState4 = new AnimState("Hit");
-			AnimState state = new AnimState("die");
+			AnimState state = new AnimState("Die");
 			AnimState animState5 = new AnimState("relaxed_loop", isLooping: true);
 			animState2.NextState = animState;
 			animState3.NextState = animState;

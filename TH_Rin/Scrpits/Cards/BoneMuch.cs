@@ -31,8 +31,11 @@ public class BoneMuch : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		int amount=1;
-		if(Owner.GetRelic<Barrow>()!=null)
-		    amount+=Owner.GetRelic<Barrow>().CorpseCards.Count;
+		IBarrowLike? barrow = TH_Rin.Scripts.Main.Tools.GetBarrowRelic(Owner);
+		if (barrow != null)
+		{
+			amount += barrow.CorpseCards.Count;
+		}
 		for(int i=0;i<amount;i++)
 		{
 			IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;

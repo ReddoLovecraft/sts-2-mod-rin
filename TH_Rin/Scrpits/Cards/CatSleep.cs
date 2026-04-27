@@ -31,6 +31,7 @@ public class CatSleep : RinCardModel
 	protected override void OnUpgrade()
 	{
 		DynamicVars.Cards.UpgradeValueBy(1);
+		DynamicVars.Energy.UpgradeValueBy(1);
 	}
 }
 

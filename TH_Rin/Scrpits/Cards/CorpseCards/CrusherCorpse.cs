@@ -49,9 +49,10 @@ public class CrusherCorpse : CorpseCardModel
 			if(mos.IsAlive)
 			{
 				int muti=1;
-				if(Owner.GetRelic<Barrow>()!=null)
+				IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+				if (barrow != null)
 				{
-					muti=Owner.GetRelic<Barrow>().CorpseCards.FindAll(x=>x is RocketCorpse).Count>0?2:1;
+					muti = barrow.CorpseCards.FindAll(x => x is RocketCorpse).Count > 0 ? 2 : 1;
 				}
 				await PowerCmd.Apply<WeakPower>(mos, DynamicVars["Power"].BaseValue*muti,Owner.Creature,this);
 				await PowerCmd.Apply<VulnerablePower>(mos, DynamicVars["Power"].BaseValue*muti,Owner.Creature,this);
@@ -65,10 +66,11 @@ public class CrusherCorpse : CorpseCardModel
 				return;
 			}
 			int muti=1;
-			if(Owner.GetRelic<Barrow>()!=null)
-				{
-					muti=Owner.GetRelic<Barrow>().CorpseCards.FindAll(x=>x is RocketCorpse).Count>0?2:1;
-				}
+			IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+			if (barrow != null)
+			{
+				muti = barrow.CorpseCards.FindAll(x => x is RocketCorpse).Count > 0 ? 2 : 1;
+			}
 			  await CreatureCmd.GainBlock(Owner.Creature,new BlockVar(DynamicVars.HpLoss.IntValue*muti,ValueProp.Unpowered),null);
 		}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

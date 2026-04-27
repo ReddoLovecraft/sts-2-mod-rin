@@ -35,9 +35,10 @@ public class ExoskeletonCorpse : CorpseCardModel
 	 public override async Task TriggerWhenCombatStart()
     {
 		int finalValue=this.DynamicVars["Power"].IntValue;
-		if(Owner.GetRelic<Barrow>()!=null)
+		IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+		if (barrow != null)
 		{
-			int cnt=Owner.GetRelic<Barrow>().CorpseCards.Count(x=>x is ExoskeletonCorpse);
+			int cnt=barrow.CorpseCards.Count(x=>x is ExoskeletonCorpse);
 			finalValue-=(int)(cnt*finalValue*0.25f);
 			if(finalValue<=0)
 			finalValue=1;

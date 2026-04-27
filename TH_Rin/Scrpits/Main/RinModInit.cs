@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Audio;
 using MegaCrit.Sts2.Core.Saves;
 using System.Reflection;
+using MegaCrit.Sts2.Core.Commands;
 using TH_Rin.Scrpits.Cards;
 
 namespace TH_Rin.Scripts.Main
@@ -173,9 +174,44 @@ namespace TH_Rin.Scripts.Main
 		}
 	}
 	}
+
+	[HarmonyPatch]
+	public static class ModSfxCmdPatch
+	{
+		static IEnumerable<MethodBase> TargetMethods()
+		{
+			return typeof(SfxCmd)
+				.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
+				.Where(m =>
+				{
+					if (m.Name != "Play")
+					{
+						return false;
+					}
+
+					ParameterInfo[] ps = m.GetParameters();
+					return ps.Length >= 1 && ps[0].ParameterType == typeof(string);
+				});
+		}
+
+		static bool Prefix(MethodBase __originalMethod, object[] __args)
+		{
+			return ModSfxPatch.HandlePlay(__originalMethod, __args);
+		}
+	}
+
 	[HarmonyPatch]
 	public static class ModSfxPatch
 	{
+		private const string ModSfxPrefix = "mod_sfx://";
+		private const float DefaultGain = 0.45f;
+		private static readonly Dictionary<string, float> GainOverrides = new()
+		{
+			["TH_Rin/ArtWorks/SFX/characterselect.wav"] = 2.8f,
+			["TH_Rin/ArtWorks/SFX/kon.wav"] = 2.8f,
+			["TH_Rin/ArtWorks/SFX/cg.wav"] = 3.2f
+		};
+
 		static IEnumerable<MethodBase> TargetMethods()
 		{
 			return typeof(NAudioManager)
@@ -194,7 +230,12 @@ namespace TH_Rin.Scripts.Main
 
 		static bool Prefix(MethodBase __originalMethod, object[] __args)
 		{
-			if (__args.Length < 1 || __args[0] is not string path || !path.StartsWith("mod_sfx://"))
+			return HandlePlay(__originalMethod, __args);
+		}
+
+		public static bool HandlePlay(MethodBase __originalMethod, object[] __args)
+		{
+			if (__args.Length < 1 || __args[0] is not string path || !path.StartsWith(ModSfxPrefix))
 			{
 				return true;
 			}
@@ -234,7 +275,8 @@ namespace TH_Rin.Scripts.Main
 
 		private static void PlayModSfx(string path, float volume)
 		{
-			string resPath = "res://" + path.Substring("mod_sfx://".Length);
+			string localPath = path.Substring(ModSfxPrefix.Length);
+			string resPath = "res://" + localPath;
 			AudioStream? stream = ResourceLoader.Load<AudioStream>(resPath);
 			if (stream == null)
 			{
@@ -243,12 +285,14 @@ namespace TH_Rin.Scripts.Main
 
 			var player = new AudioStreamPlayer();
 			player.Stream = stream;
-			player.Bus = FindFirstExistingBus(["SFX", "Sfx", "SoundEffects", "SE", "Master"]);
+			player.Bus = FindSfxBusName();
 
-			float master = SaveManager.Instance.SettingsSave.VolumeMaster;
-			float sfx = SaveManager.Instance.SettingsSave.VolumeSfx;
-			float finalVol = volume * Mathf.Pow(master, 2f) * Mathf.Pow(sfx, 2f);
-			player.VolumeDb = Mathf.LinearToDb(Mathf.Max(0.0001f, finalVol));
+			float gain = DefaultGain;
+			if (GainOverrides.TryGetValue(localPath, out float overrideGain))
+			{
+				gain *= overrideGain;
+			}
+			player.VolumeDb = Mathf.LinearToDb(Mathf.Max(0.0001f, volume * gain));
 
 			if (NGame.Instance != null)
 			{
@@ -265,15 +309,28 @@ namespace TH_Rin.Scripts.Main
 			player.Connect("finished", Callable.From(player.QueueFree));
 		}
 
-		private static string FindFirstExistingBus(IEnumerable<string> candidates)
+		private static string FindSfxBusName()
 		{
-			foreach (string bus in candidates)
+			int count = AudioServer.BusCount;
+			for (int i = 0; i < count; i++)
 			{
-				if (AudioServer.GetBusIndex(bus) >= 0)
+				string bus = AudioServer.GetBusName(i);
+				if (string.Equals(bus, "SFX", StringComparison.OrdinalIgnoreCase))
 				{
 					return bus;
 				}
 			}
+
+			for (int i = 0; i < count; i++)
+			{
+				string bus = AudioServer.GetBusName(i);
+				string lower = bus.ToLowerInvariant();
+				if (lower.Contains("sfx") || lower.Contains("soundeffect") || lower.Contains("sound_effect") || lower == "se")
+				{
+					return bus;
+				}
+			}
+
 			return "Master";
 		}
 	}

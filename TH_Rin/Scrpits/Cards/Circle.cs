@@ -30,8 +30,7 @@ public class Circle : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		this.DynamicVars.Cards.UpgradeValueBy(1);
-		this.DynamicVars.Energy.UpgradeValueBy(1);
+		this.RemoveKeyword(CardKeyword.Ethereal);
 	}
 }
 

@@ -250,7 +250,17 @@ namespace TH_Rin.Scripts.Main
         var genericMethod = method.MakeGenericMethod(corpseType);
         return (CorpseCardModel)genericMethod.Invoke(null, new object[] { owner, integrity, rotCount, rotable });
     }
-        public static void RemoveFromBarrow(Barrow barrow, CorpseCardModel card)
+        public static IBarrowLike? GetBarrowRelic(Player owner)
+        {
+            Barrow? barrow = owner.GetRelic<Barrow>();
+            if (barrow != null)
+            {
+                return barrow;
+            }
+            return owner.GetRelic<BasicBarrow>();
+        }
+
+        public static void RemoveFromBarrow(IBarrowLike barrow, CorpseCardModel card)
         {
             card.TriggerWhenRemove();
             barrow.CorpseCards.Remove(card);
@@ -288,7 +298,7 @@ namespace TH_Rin.Scripts.Main
                 return;
             }
 
-            Barrow? barrow = owner.GetRelic<Barrow>();
+            IBarrowLike? barrow = GetBarrowRelic(owner);
             if (barrow == null)
             {
                 return;
@@ -302,7 +312,7 @@ namespace TH_Rin.Scripts.Main
             {
                 return;
             }
-            Barrow? barrow = owner.GetRelic<Barrow>();
+            IBarrowLike? barrow = GetBarrowRelic(owner);
             if (barrow == null)
             {
                 return;

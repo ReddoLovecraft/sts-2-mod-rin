@@ -35,9 +35,10 @@ public class OvicopterCorpse : CorpseCardModel
 	 public override async Task TriggerWhenCombatStart()
         {
 			int value=0;
-			if(Owner.GetRelic<Barrow>()!=null)
+			IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+			if (barrow != null)
             {
-				value=Owner.GetRelic<Barrow>().CorpseCards.Count;
+				value=barrow.CorpseCards.Count;
 			}
              await PowerCmd.Apply<StrengthPower>(Owner.Creature, value,Owner.Creature, this);
         }

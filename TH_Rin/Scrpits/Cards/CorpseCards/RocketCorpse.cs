@@ -44,9 +44,10 @@ public class RocketCorpse : CorpseCardModel
 			if (creature != null)
 			{
 				int muti=1;
-				if(Owner.GetRelic<Barrow>()!=null)
+				IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+				if (barrow != null)
 				{
-					muti=Owner.GetRelic<Barrow>().CorpseCards.FindAll(x=>x is CrusherCorpse).Count>0?2:1;
+					muti = barrow.CorpseCards.FindAll(x => x is CrusherCorpse).Count > 0 ? 2 : 1;
 				}
 			  await CreatureCmd.Damage(choiceContext,creature, DynamicVars.HpLoss.IntValue*muti,ValueProp.Unpowered,null,null);
 			}

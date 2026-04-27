@@ -39,9 +39,10 @@ public class CorpseTravel : RinCardModel
 			NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
 		}
 		int value=0;
-		if(Owner.GetRelic<Barrow>()!=null)
+		IBarrowLike? barrow = TH_Rin.Scripts.Main.Tools.GetBarrowRelic(Owner);
+		if (barrow != null)
 		{
-			value=Owner.GetRelic<Barrow>().CorpseCards.Count;
+			value = barrow.CorpseCards.Count;
 		}
 		await DamageCmd.Attack(value).FromCard(this).TargetingAllOpponents(base.CombatState)
 			.WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")

@@ -20,7 +20,14 @@ public class CorpseLove : RinCardModel
           HoverTipFactory.FromPower<WeakPower>(),
           HoverTipFactory.FromPower<VulnerablePower>(),
         });
-	protected override bool ShouldGlowGoldInternal => (Owner.GetRelic<Barrow>()!=null&&Owner.GetRelic<Barrow>().CorpseCards.Count>0)||false;
+	protected override bool ShouldGlowGoldInternal
+	{
+		get
+		{
+			IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+			return barrow != null && barrow.CorpseCards.Count > 0;
+		}
+	}
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
 	public CorpseLove() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 	{

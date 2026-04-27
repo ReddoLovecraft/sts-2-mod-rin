@@ -25,7 +25,7 @@ public static class BarrowSimpleSelectClickPatch
 {
 	public static bool Prefix(NSimpleCardSelectScreen __instance, CardModel card)
 	{
-		if (!BarrowCorpseSelectContext.TryGet(__instance, out Barrow barrow))
+		if (!BarrowCorpseSelectContext.TryGet(__instance, out IBarrowLike barrow))
 		{
 			return true;
 		}
@@ -34,7 +34,7 @@ public static class BarrowSimpleSelectClickPatch
 		return false;
 	}
 
-	private static async Task HandleClick(NSimpleCardSelectScreen screen, Barrow barrow, CardModel card)
+	private static async Task HandleClick(NSimpleCardSelectScreen screen, IBarrowLike barrow, CardModel card)
 	{
 		if (card is not CorpseCardModel corpseCard)
 		{
@@ -57,22 +57,27 @@ public static class BarrowSimpleSelectClickPatch
 		RefreshGrid(screen, barrow);
 	}
 
-	private static void RefreshGrid(NSimpleCardSelectScreen screen, Barrow barrow)
+	private static void RefreshGrid(NSimpleCardSelectScreen screen, IBarrowLike barrow)
 	{
 		NCardGrid grid = screen.GetNode<NCardGrid>("%CardGrid");
 		List<SortingOrders> sorting = new List<SortingOrders> { SortingOrders.Ascending };
 		grid.SetCards(barrow.CorpseCards.Cast<CardModel>().ToList(), PileType.None, sorting);
 	}
 
-	private static async Task<bool> ConfirmRemove(Barrow barrow)
+	private static async Task<bool> ConfirmRemove(IBarrowLike barrow)
 	{
 		if (NModalContainer.Instance == null)
 		{
 			return true;
 		}
 
+		if (barrow is not RelicModel relic)
+		{
+			return true;
+		}
+
 		NGenericPopup nGenericPopup = NGenericPopup.Create();
 		NModalContainer.Instance.Add(nGenericPopup);
-		return await nGenericPopup.WaitForConfirmation(new LocString("relics", $"{barrow.Id.Entry}.confirmdelete"), new LocString("relics", $"{barrow.Id.Entry}.delete"), new LocString("relics", $"{barrow.Id.Entry}.cancel"), new LocString("relics", $"{barrow.Id.Entry}.delete"));
+		return await nGenericPopup.WaitForConfirmation(new LocString("relics", $"{relic.Id.Entry}.confirmdelete"), new LocString("relics", $"{relic.Id.Entry}.delete"), new LocString("relics", $"{relic.Id.Entry}.cancel"), new LocString("relics", $"{relic.Id.Entry}.delete"));
 	}
 }

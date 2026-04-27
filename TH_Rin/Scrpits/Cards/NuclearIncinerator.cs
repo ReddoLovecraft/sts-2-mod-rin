@@ -26,7 +26,7 @@ public class NuclearIncinerator : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-		SfxCmd.Play(RinInit.ToModSfxPath("TH_Rin/ArtWorks/SFX/cg.wav"));
+		SfxCmd.Play(RinInit.ToModSfxPath("TH_Rin/ArtWorks/SFX/kon.wav"));
 		await PowerCmd.Apply<NuclearIncineratorPower>(Owner.Creature,this.DynamicVars.Cards.IntValue,Owner.Creature,this);
 	}
 	protected override void OnUpgrade()

@@ -41,9 +41,10 @@ namespace TH_Rin.Scrpits.Powers
         public override Task AfterCombatEnd(CombatRoom room)
 	    {
         int finalValue=0;
-        if(Owner.Player.GetRelic<Barrow>()!=null)
+        IBarrowLike? barrow = TH_Rin.Scripts.Main.Tools.GetBarrowRelic(Owner.Player);
+        if (barrow != null)
         {
-            finalValue=Owner.Player.GetRelic<Barrow>().CorpseCards.Count*deathNum;
+            finalValue=barrow.CorpseCards.Count*deathNum;
         }
         if(finalValue>0)
 		    room.AddExtraReward(base.Owner.Player, new GoldReward(finalValue, base.Owner.Player));

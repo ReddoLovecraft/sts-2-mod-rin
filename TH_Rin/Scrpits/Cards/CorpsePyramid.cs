@@ -28,9 +28,10 @@ public class CorpsePyramid : RinCardModel
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 		int amount=0;
-		if(Owner.GetRelic<Barrow>()!=null)
+		IBarrowLike? barrow = Tools.GetBarrowRelic(Owner);
+		if (barrow != null)
 		{
-		  amount=Owner.GetRelic<Barrow>().CorpseCards.Count;
+			amount = barrow.CorpseCards.Count;
 		}
 		if(amount>0)
 			await PowerCmd.Apply<VulnerablePower>(base.CombatState.HittableEnemies,amount,Owner.Creature,this);

@@ -29,9 +29,10 @@ public class CorpseStreet : RinCardModel
 	{
 		await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
 		int value=0;
-		if(Owner.GetRelic<Barrow>()!=null)
+		IBarrowLike? barrow = TH_Rin.Scripts.Main.Tools.GetBarrowRelic(Owner);
+		if (barrow != null)
 		{
-			value=Owner.GetRelic<Barrow>().CorpseCards.Count;
+			value=barrow.CorpseCards.Count;
 			await PowerCmd.Apply<WraithPower>(Owner.Creature,value,Owner.Creature,this);
 		}
 	}

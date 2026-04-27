@@ -6,17 +6,16 @@ namespace TH_Rin.Scrpits.UI;
 
 public static class BarrowCorpseSelectContext
 {
-	private static readonly ConditionalWeakTable<NSimpleCardSelectScreen, Barrow> _map = new ConditionalWeakTable<NSimpleCardSelectScreen, Barrow>();
+	private static readonly ConditionalWeakTable<NSimpleCardSelectScreen, IBarrowLike> _map = new ConditionalWeakTable<NSimpleCardSelectScreen, IBarrowLike>();
 
-	public static void Attach(NSimpleCardSelectScreen screen, Barrow barrow)
+	public static void Attach(NSimpleCardSelectScreen screen, IBarrowLike barrow)
 	{
 		_map.Remove(screen);
 		_map.Add(screen, barrow);
 	}
 
-	public static bool TryGet(NSimpleCardSelectScreen screen, out Barrow barrow)
+	public static bool TryGet(NSimpleCardSelectScreen screen, out IBarrowLike barrow)
 	{
 		return _map.TryGetValue(screen, out barrow!);
 	}
 }
-

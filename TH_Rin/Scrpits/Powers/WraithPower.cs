@@ -113,7 +113,8 @@ namespace TH_Rin.Scrpits.Powers
 					}
 				}
 		}
-		if(Owner.Player.GetRelic<Barrow>()!=null&&Owner.Player.GetRelic<Barrow>().CorpseCards.FindAll(x=>x is SoulNexusCorpse).Count>0)
+		IBarrowLike? barrow = Tools.GetBarrowRelic(Owner.Player);
+		if (barrow != null && barrow.CorpseCards.FindAll(x => x is SoulNexusCorpse).Count > 0)
 		{
 			List<Soul> cards = Soul.Create(base.Owner.Player, 1, base.CombatState).ToList();
 			CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
