@@ -1,19 +1,19 @@
 {
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.1-0.ancient": "嗯……比起操纵人偶，倒不如说你才是那个被操纵的人偶吧？",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.1-0.next": "什么意思？",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.1-1.char": "……字面意思，你不正是被那个给我下毒的家伙操纵了么？",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.1-1.next": "沉默",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.1-2.ancient": "看来你完全不理解啊，那么下次再见！",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.1-0.ancient": "一匹の猫？これは珍しい！しかし君の好みはかなり「ユニーク」だな……",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.1-0.next": "続ける",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.1-1.char": "私の趣味はあなたに関係ない。",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.1-1.next": "爪撃",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.1-2.ancient": "……シッシッ。本当に礼儀知らずな猫だな。",
 
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.2-0r.ancient": "你又回来了，这一次，你是怎么想的呢？",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.2-0r.next": "继续",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.2-1r.char": "不管怎么样，看来不教训你一顿是不行了呢。",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.2-1r.next": "人偶出击！",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.2-2r.ancient": "唉……那就，下次见！",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.2-0r.ancient": "この死体の腐臭……実に吐き気がする。",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.2-0r.next": "フーフー",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.2-1r.char": "何を言ってるの？全然臭くないよ。むしろいい香りじゃん！",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.2-1r.next": "爪撃",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.2-2r.ancient": "君の思考は理解できないな。次は体をきれいにしてから来い！",
 
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.0-0.ancient": "操纵人偶的小姑娘么？有点意思，但还远远不够看啊。",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.0-0.next": "继续",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.0-1.char": "那种事情不试试看怎么知道呢？",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.0-1.next": "人偶出击！",
-  "THE_ARCHITECT.talk.TH_ALICE-ALICE_CHARACTER.0-2.ancient": "……下次再来见我吧！"
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.0-0.ancient": "私に対抗するために死体を集めているのか？実に悪質だ！",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.0-0.next": "続ける",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.0-1.char": "考えすぎだよ。死体集めは純粋に私の個人的な趣味なんだから。",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.0-1.next": "爪撃",
+  "THE_ARCHITECT.talk.TH_RIN-RIN_CHARACTER.0-2.ancient": "……次に会おう！"
 }

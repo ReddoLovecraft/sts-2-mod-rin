@@ -16,6 +16,7 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Saves;
 using MegaCrit.Sts2.Core.Settings;
 using MegaCrit.Sts2.Core.ValueProps;
+using TH_Rin.Relics;
 using TH_Rin.Scripts.Main;
 using TH_Rin.Scrpits.Cards;
 using TH_Rin.Scrpits.Relics;
@@ -86,9 +87,13 @@ namespace TH_Rin.Scrpits.Powers
         // 类似人魂灯特效，大概
 	    if	(SaveManager.Instance.PrefsSave.FastMode != FastModeType.Fast)
         await NWraithOrbVfx.Play(base.Owner, target);
+		bool flag=Owner.Player.GetRelic<PowerCardCar>()!=null;
 		if(!Owner.HasPower<RelyOnPower>())
         	{
-				await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+				if(!flag)
+					await CreatureCmd.Damage(choiceContext,target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+				else
+					await CreatureCmd.Damage(choiceContext,base.Owner.CombatState.HittableEnemies, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
 				if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 				{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);
@@ -98,7 +103,11 @@ namespace TH_Rin.Scrpits.Powers
 		{
 			 if(Owner.HasPower<StrengthPower>())
 				{
+
+					if(!flag)
 					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(), ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+					else
+					await CreatureCmd.Damage(choiceContext,base.Owner.CombatState.HittableEnemies, DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(), ValueProp.Unblockable | ValueProp.Unpowered,null,null);
 					if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 					{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue+Owner.GetPowerAmount<StrengthPower>(),null,null);
@@ -106,7 +115,10 @@ namespace TH_Rin.Scrpits.Powers
 				}
 			 else
 				{
-					await CreatureCmd.Damage(choiceContext, target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+					if(!flag)
+					await CreatureCmd.Damage(choiceContext,target, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
+					else
+					await CreatureCmd.Damage(choiceContext,base.Owner.CombatState.HittableEnemies, DynamicVars.Cards.IntValue, ValueProp.Unblockable | ValueProp.Unpowered,null,null);
 					if(target!=null&&target.IsAlive&&Owner.HasPower<BrandPower>())
 					{
 					await PowerCmd.Apply<IgnitePower>(target,DynamicVars.Cards.IntValue,null,null);

@@ -1,8 +1,12 @@
-{
-  "TH_ALICE-MANA_POTION.description": "Restore energy to maximum. At the start of your next [blue]2[/blue] turns, lose [blue]1[/blue] energy.",
-  "TH_ALICE-MANA_POTION.title": "Mana Potion",
-  "TH_ALICE-LUBE_POTION.description": "All [gold]Dolls[/gold] act an additional [blue]1[/blue] time this turn.",
-  "TH_ALICE-LUBE_POTION.title": "Joint Lubricant",
-  "TH_ALICE-BOTTLE_OF_WAX_POTION.description": "Randomly create [blue]2[/blue] [gold]Wax Dolls[/gold].",
-  "TH_ALICE-BOTTLE_OF_WAX_POTION.title": "Bottle of Wax Dolls"
+{ 
+  "TH_RIN-PREVENTING_ROT_POTION.title": "Eientei Secret Preservative",
+  "TH_RIN-PREVENTING_ROT_POTION.description": "[gold]Corpses[/gold] dropped by all enemies will not [green]rot[/green].",
+  "TH_RIN-BOTTLE_OF_WRAITH.title": "Bottle of Wraith",
+  "TH_RIN-BOTTLE_OF_WRAITH.description": "Create [blue]3[/blue] [gold]Wraith(s)[/gold].",
+  "TH_RIN-TRUE_FIRE_POTION.title": "True Fire Potion",
+  "TH_RIN-TRUE_FIRE_POTION.description": "Apply [blue]10[/blue] [gold]Ignite[/gold].",
+  "TH_RIN-NUCLEAR_FUEL.title": "Nuclear Fuel",
+  "TH_RIN-NUCLEAR_FUEL.description": "Gain {Energy:energyIcons()}. Gain [blue]6[/blue] [gold]Demise[/gold].",
+  "TH_RIN-CORPSE_BAR.title": "Silver Vine Wine",
+  "TH_RIN-CORPSE_BAR.description": "Gain [blue]5[/blue] [gold]Vigor[/gold]. At the start of your next [blue]3[/blue] turns, gain [blue]5[/blue] [gold]Vigor[/gold]."
 }

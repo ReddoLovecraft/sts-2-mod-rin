@@ -1,14 +1,14 @@
 {
-	"CORPSE.title": "尸体",
-	"CORPSE.description": "能够被动的为你提供增益效果的临时卡牌。\n可以通过使敌人死亡获取，具有[gold]完整度[/gold]的区别(分为[gold]完好(75%+)[/gold]、[green]破损(50%+)[/green]、[blue]残缺(25%+)[/blue]和[purple]损坏(0%)[/purple]分别对应100%、50%、25%效果的[gold]尸体[/gold]([gold]完整度[/gold]为[purple]损坏[/purple]时不能获取[gold]尸体[/gold])。)，[gold]完整度[/gold]决定了[gold]尸体[/gold]的效果强度。\n如无特殊说明，[gold]尸体[/gold]均会[green]腐烂[/green]。",
-	"INTERTEGRITY.title": "完整度",
-	"INTERTEGRITY.description": "你每次对敌人造成伤害时，都会使得完整度降低1%，特别的，如果你的单次伤害超过敌人最大生命的25%或是使用[gold]点燃[/gold]对敌人造成伤害，则改为降低5%。",
-	"ROT.title": "腐烂X",
-	"ROT.description": "[gold]尸体[/gold]将在经过[blue]X[/blue]层后被[gold]移除[/gold]。",
+	"CORPSE.title": "死体",
+	"CORPSE.description": "受動的にあなたにバフ効果をもたらす一時的なカード。\n敵を死亡させることで入手できる。[gold]完全度[/gold]の違いがあり、[gold]死体[/gold]の効果強度を決定する（[gold]完好(75%+)[/gold]、[green]破损(50%+)[/green]、[blue]残缺(25%+)[/blue]、[purple]损坏(0%)[/purple]にそれぞれ[gold]100%[/gold]、[green]50%[/green]、[blue]25%[/blue]の効果が対応し、[gold]完全度[/gold]が[purple]损坏[/purple]の場合は[gold]死体[/gold]を入手できない）。\n特に記載がない限り、[gold]死体[/gold]は[green]腐敗[/green]する。",
+	"INTEGRITY.title": "完全度",
+	"INTEGRITY.description": "あなたが敵にダメージを与えるたび、完全度が[blue]1%[/blue]低下する。特に、1回のダメージが敵の最大ライフの[blue]25%[/blue]を超えるか、[gold]炎上[/gold]でダメージを与えた場合、代わりに[blue]5%[/blue]低下する。",
+	"ROT.title": "腐敗X",
+	"ROT.description": "[gold]死体[/gold]は[blue]X[/blue]階層後に[gold]除去[/gold]される。",
 	"PREVENT_ROT.title": "防腐",
-	"PREVENT_ROT.description": "这具[gold]尸体[/gold]不会因腐烂而被[gold]移除[/gold]。",
-	"IGNITE.title": "点燃",
-	"IGNITE.description": "在你的回合开始时，失去等同于[gold]点燃[/gold]层数的生命，然后将层数加[blue]1[/blue]。",
-	"WRAITH.title": "怨灵",
-	"WRAITH.description": "每当你对敌人造成伤害时，消耗[blue]1[/blue]层并使得敌人额外失去[blue]4[/blue]点生命。"
+	"PREVENT_ROT.description": "この[gold]死体[/gold]は[green]腐敗[/green]によって[gold]除去[/gold]されない。",
+	"IGNITE.title": "炎上",
+	"IGNITE.description": "あなたのターン開始時、[gold]炎上[/gold]層数と同じだけのライフを失い、その後層数を[blue]1[/blue]増やす。",
+	"WRAITH.title": "怨霊",
+	"WRAITH.description": "敵にダメージを与えるたび、[blue]1[/blue]層消費して敵にさらに[blue]4[/blue]ライフを失わせる。"
 }

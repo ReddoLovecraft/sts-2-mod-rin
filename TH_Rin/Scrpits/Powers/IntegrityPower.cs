@@ -12,6 +12,7 @@ using TH_Rin.Scripts.Main;
 using TH_Rin.Scrpits.Relics;
 using Patchouib.Scrpits.Main;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using TH_Rin.Relics;
 
 namespace TH_Rin.Scrpits.Powers
 {
@@ -53,9 +54,13 @@ namespace TH_Rin.Scrpits.Powers
 	}
 		public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
 	{
-		if (target == base.Owner && dealer != null && props.IsPoweredAttack()&&amount>0)
+		if (target == base.Owner && dealer != null&&dealer.IsPlayer && props.IsPoweredAttack()&&amount>0)
 		{
 			Flash();
+			if(dealer.Player.GetRelic<MeatCooker>()!=null)
+			{
+				await TriggerLostMoreAmount(1);
+			}
 			if(amount>=target.MaxHp/4)
 			{
 				await TriggerLostMoreAmount(5);
