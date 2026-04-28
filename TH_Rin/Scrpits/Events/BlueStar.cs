@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Runs;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TH_Rin.Relics;
 using TH_Rin.Scrpits.Encounters;
 
 namespace TH_Rin.Scrpits.Events;
@@ -28,7 +29,7 @@ public sealed class BlueStar : RinEventModel
 			CreateOption(Join, "TH_RIN-BLUE_STAR.pages.INITIAL.options.JOIN"),
 			CreateOption(Hunt, "TH_RIN-BLUE_STAR.pages.INITIAL.options.HUNT",
 			[
-				.. HoverTipFactory.FromRelic(ModelDb.Relic<Circlet>())
+				.. HoverTipFactory.FromRelic(ModelDb.Relic<HeroProof>())
 			]),
 		];
 	}
@@ -63,7 +64,7 @@ public sealed class BlueStar : RinEventModel
 			return;
 		}
 
-		await RelicCmd.Obtain(ModelDb.Relic<Circlet>().ToMutable(), Owner);
+		await RelicCmd.Obtain(ModelDb.Relic<HeroProof>().ToMutable(), Owner);
 		SetEventFinished(PageDescription("HUNT"));
 	}
 }

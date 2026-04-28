@@ -52,6 +52,6 @@
   "TH_RIN-WHETSTONE.description": "带有“爪”字的卡牌造成的伤害提高[blue]6[/blue]点。",
   "TH_RIN-WHETSTONE.flavor": "标准尺寸的砥石。可以研磨武器，回复武器的锐利度，对你的爪子来说也是一样的。",
   "TH_RIN-HERO_PROOF.title": "勇气之证",
-  "TH_RIN-HERO_PROOF.description": "[red]精英[/red]战斗中你造成的伤害翻[blue]2[/blue]倍。\n[purple]首领[/purple][blue]3[/blue]倍。",
+  "TH_RIN-HERO_PROOF.description": "[red]精英[/red]战斗中你造成的伤害翻[blue]2[/blue]倍。\n[purple]首领[/purple]战斗中你造成的伤害翻[blue]3[/blue]倍。",
   "TH_RIN-HERO_PROOF.flavor": "击败了传说中的黑龙、勇气与实力的证明。"
 }

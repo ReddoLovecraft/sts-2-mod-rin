@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using TH_Rin.Scripts.Main;
+using TH_Rin.Scrpits.Relics;
 
 namespace TH_Rin.Scrpits.Cards
 {
@@ -30,7 +31,10 @@ public class SkulkingColonyCorpse : CorpseCardModel
 	}
 	 public override async Task TriggerWhenCombatStart()
         {
-		  await PowerCmd.Apply<HardenedShellPower>(Owner.Creature, this.DynamicVars.Cards.IntValue,Owner.Creature, this);
+		if(Owner.Creature.HasPower<HardenedShellPower>())
+			return;
+		else
+        	await PowerCmd.Apply<HardenedShellPower>(Owner.Creature, this.DynamicVars.Cards.IntValue,Owner.Creature, this);
         }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

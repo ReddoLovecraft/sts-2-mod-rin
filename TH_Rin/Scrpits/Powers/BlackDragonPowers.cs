@@ -77,17 +77,18 @@ namespace TH_Rin.Scrpits.Powers
 			{
 				return;
 			}
-
-			data.MusicStage = stage;
-			PlayStageMusic(stage);
+			if (TryPlayStageMusic(stage))
+			{
+				data.MusicStage = stage;
+			}
 		}
 
-		private void PlayStageMusic(int stage)
+		private bool TryPlayStageMusic(int stage)
 		{
 			NCombatRoom? combatRoom = NCombatRoom.Instance;
 			if (combatRoom == null)
 			{
-				return;
+				return false;
 			}
 
 			AudioStreamPlayer? player = combatRoom.GetNodeOrNull<AudioStreamPlayer>(new NodePath(_musicNodeName));
@@ -102,13 +103,22 @@ namespace TH_Rin.Scrpits.Powers
 			}
 
 			string path = GetMusicPathForStage(stage);
-			AudioStream stream = PreloadManager.Cache.GetAsset<AudioStream>(path);
+			AudioStream stream;
+			try
+			{
+				stream = PreloadManager.Cache.GetAsset<AudioStream>(path);
+			}
+			catch
+			{
+				return false;
+			}
 			if (stream is AudioStreamMP3 mp3)
 			{
 				mp3.Loop = true;
 			}
 			player.Stream = stream;
 			player.Play();
+			return true;
 		}
 
 		private void StopStageMusic()
@@ -135,6 +145,21 @@ namespace TH_Rin.Scrpits.Powers
 		public override Task BeforeCombatStart()
 		{
 			EnsureMusicIsAtLeastStage(0);
+			return Task.CompletedTask;
+		}
+
+		public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+		{
+			EnsureMusicIsAtLeastStage(0);
+			return Task.CompletedTask;
+		}
+
+		public override Task AfterCreatureAddedToCombat(Creature creature)
+		{
+			if (creature == Owner)
+			{
+				EnsureMusicIsAtLeastStage(0);
+			}
 			return Task.CompletedTask;
 		}
 

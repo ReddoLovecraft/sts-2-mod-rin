@@ -30,6 +30,68 @@ using MegaCrit.Sts2.Core.Runs;
 namespace TH_Rin.Scrpits.Monsters;
 public sealed class BlackDargon : CustomMonsterModel
 {
+	private sealed class DynamicMultiAttackIntent : AttackIntent
+	{
+		private readonly int _repeat;
+
+		public override int Repeats => _repeat;
+
+		protected override LocString IntentLabelFormat => new LocString("intents", "FORMAT_DAMAGE_MULTI");
+
+		public DynamicMultiAttackIntent(Func<decimal> damageCalc, int repeat)
+		{
+			DamageCalc = damageCalc;
+			_repeat = repeat;
+		}
+
+		public override int GetTotalDamage(IEnumerable<Creature> targets, Creature owner)
+		{
+			return GetSingleDamage(targets, owner) * Repeats;
+		}
+
+		public override LocString GetIntentLabel(IEnumerable<Creature> targets, Creature owner)
+		{
+			LocString intentLabelFormat = IntentLabelFormat;
+			intentLabelFormat.Add("Damage", GetSingleDamage(targets, owner));
+			intentLabelFormat.Add("Repeat", Repeats);
+			return intentLabelFormat;
+		}
+	}
+
+	private sealed class DynamicStatusIntent : AbstractIntent
+	{
+		private readonly Func<int> _countCalc;
+
+		public override IntentType IntentType => IntentType.StatusCard;
+
+		protected override LocString IntentLabelFormat => new LocString("intents", "FORMAT_STATUS_CARD_COUNT");
+
+		protected override string SpritePath => "atlases/intent_atlas.sprites/intent_status_card.tres";
+
+		protected override string IntentPrefix => "STATUS";
+
+		public DynamicStatusIntent(Func<int> countCalc)
+		{
+			_countCalc = countCalc;
+		}
+
+		private int CardCount => _countCalc();
+
+		public override LocString GetIntentLabel(IEnumerable<Creature> _, Creature __)
+		{
+			LocString intentLabelFormat = IntentLabelFormat;
+			intentLabelFormat.Add("CardCount", CardCount);
+			return intentLabelFormat;
+		}
+
+		protected override LocString GetIntentDescription(IEnumerable<Creature> targets, Creature owner)
+		{
+			LocString intentDescription = base.GetIntentDescription(targets, owner);
+			intentDescription.Add("CardCount", CardCount);
+			return intentDescription;
+		}
+	}
+
 	private const string FlyMoveId = "FLY";
 	private const string DownStrikeMoveId = "DOWN_STRIKE";
 	private const string FireBreathMoveId = "FIRE_BREATH";
@@ -110,9 +172,9 @@ public sealed class BlackDargon : CustomMonsterModel
 
 		MoveState fly = new MoveState(FlyMoveId, FlyMove, new BuffIntent(), new DefendIntent());
 		MoveState downStrike = new MoveState(DownStrikeMoveId, DownStrikeMove, new SingleAttackIntent(() => DownStrikeDamage), new DebuffIntent());
-		MoveState fireBreath = new MoveState(FireBreathMoveId, FireBreathMove, new DebuffIntent(), new StatusIntent(10));
-		MoveState threeBall = new MoveState(ThreeBallMoveId, ThreeBallMove, new MultiAttackIntent(ThreeBallDamage, 3));
-		MoveState fanFirewall = new MoveState(FanFirewallMoveId, FanFirewallMove, new SingleAttackIntent(FanFirewallDamage), new DebuffIntent());
+		MoveState fireBreath = new MoveState(FireBreathMoveId, FireBreathMove, new DebuffIntent(), new DynamicStatusIntent(() => 10 * GetFireMultiplier()));
+		MoveState threeBall = new MoveState(ThreeBallMoveId, ThreeBallMove, new DynamicMultiAttackIntent(() => ThreeBallDamage * GetFireMultiplier(), 3));
+		MoveState fanFirewall = new MoveState(FanFirewallMoveId, FanFirewallMove, new SingleAttackIntent(() => FanFirewallDamage * GetFireMultiplier()), new DebuffIntent());
 		MoveState tailSweep = new MoveState(TailSweepMoveId, TailSweepMove, new DebuffIntent(), new DefendIntent());
 
 		RandomBranchState randomFire = new RandomBranchState("RAND_FIRE");
