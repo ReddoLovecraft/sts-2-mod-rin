@@ -50,5 +50,8 @@
   "TH_RIN-MEAT_COOKER.flavor": "焼肉を作るための各種器具をセットにしたもの。戦闘中にすぐに美味しく焼き肉を楽しめる！",
   "TH_RIN-WHETSTONE.title": "砥石",
   "TH_RIN-WHETSTONE.description": "「爪」の字を含むカードのダメージが[blue]6[/blue]点上昇する。",
-  "TH_RIN-WHETSTONE.flavor": "標準サイズの砥石。武器を研磨し、切れ味を回復できる。あなたの爪も同じだ。"
+  "TH_RIN-WHETSTONE.flavor": "標準サイズの砥石。武器を研磨し、切れ味を回復できる。あなたの爪も同じだ。",
+   "TH_RIN-HERO_PROOF.title": "勇気の証",
+  "TH_RIN-HERO_PROOF.description": "[red]エリート[/red]戦闘であなたが与えるダメージが[blue]2[/blue]倍になる。\n[purple]ボス[/purple]では[blue]3[/blue]倍。",
+  "TH_RIN-HERO_PROOF.flavor": "伝説の黒竜を討ち倒した、勇気と実力の証。"
 }

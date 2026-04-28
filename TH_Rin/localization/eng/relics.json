@@ -50,5 +50,8 @@
   "TH_RIN-MEAT_COOKER.flavor": "A set containing various tools for making grilled meat, allowing you to enjoy delicious food instantly during battle!",
   "TH_RIN-WHETSTONE.title": "Whetstone",
   "TH_RIN-WHETSTONE.description": "Cards with \"Claw\" in their name deal [blue]6[/blue] more damage.",
-  "TH_RIN-WHETSTONE.flavor": "A standard-sized whetstone. Can sharpen weapons and restore their sharpness; the same applies to your claws."
+  "TH_RIN-WHETSTONE.flavor": "A standard-sized whetstone. Can sharpen weapons and restore their sharpness; the same applies to your claws.",
+  "TH_RIN-HERO_PROOF.title": "Proof of Courage",
+  "TH_RIN-HERO_PROOF.description": "In [red]Elite[/red] combats, multiply damage you deal by [blue]2[/blue].\nIn [purple]Boss[/purple] combats, multiply by [blue]3[/blue].",
+  "TH_RIN-HERO_PROOF.flavor": "Proof of courage and strength, having defeated the legendary black dragon."
 }

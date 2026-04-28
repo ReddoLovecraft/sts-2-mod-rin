@@ -21,6 +21,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using System.Reflection;
 using TH_Rin.Scrpits.Cards;
 using TH_Rin.Scrpits.Relics;
+using TH_Rin.Scrpits.Monsters;
 
 namespace TH_Rin.Scripts.Main
 {
@@ -194,6 +195,10 @@ namespace TH_Rin.Scripts.Main
             if(monster is EyeWithTeeth||monster is Parafright)
             {
                 string message = "It's just an illusion, there's no corpse.";
+                    if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "これはただの幻影で、死体はない。";
+                }
                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
                 {
                     message = "这只是个虚影，没有尸体。";
@@ -204,6 +209,10 @@ namespace TH_Rin.Scripts.Main
              if(monster is GasBomb)
             {
                 string message = "It's just a cloud of gas, there's no corpse.";
+                   if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "これは単なるガスの塊で、遺体はない。";
+                }
                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
                 {
                     message = "这只是一团气体，没有尸体。";
@@ -214,6 +223,10 @@ namespace TH_Rin.Scripts.Main
                if(monster is GremlinMerc)
             {
                 string message = "It's actually a creation made up of two goblins, and they're not dead yet!";
+                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "なんと、二匹のゴブリンが組み合わせた造物だ、まだ生きてる！";
+                }
                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
                 {
                     message = "居然是两只地精组合起来的造物，它们还没死！";
@@ -224,6 +237,10 @@ namespace TH_Rin.Scripts.Main
             if(monster is Doormaker)
             {
                 string message = "It's just a door.";
+                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "ただのドアに過ぎない！";
+                }
                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
                 {
                     message = "只是一扇门而已！";
@@ -234,6 +251,10 @@ namespace TH_Rin.Scripts.Main
             if(monster is BattleFriendV1||monster is BattleFriendV2||monster is BattleFriendV3)
             {
                 string message = "It's just a target. There's no need to take it away.";
+                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "標的が一つくらいで、持ち去る必要はない。";
+                }
                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
                 {
                     message = "一个标靶而已，没必要拿走了。";
@@ -241,7 +262,20 @@ namespace TH_Rin.Scripts.Main
                 Patchoulib.Scrpits.Main.Tools.Talk(message, owner.Creature);
                 return null;
             }
-           
+           if(monster is BlackDargon)
+            {
+                string message = "This corpse is still needed, so I can't take it away";
+                 if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "jpn")
+                {
+                    message = "この死体はまだ使われるので、持ち去ることはできない。";
+                }
+                if (MegaCrit.Sts2.Core.Localization.LocManager.Instance.Language == "zhs")
+                {
+                    message = "这具尸体还要用，我不能拿走。";
+                }
+                Patchoulib.Scrpits.Main.Tools.Talk(message, owner.Creature);
+                return null;
+            }
             //走没找到怪物类型的逻辑
             return CreateCorpseCard<TestCorpse>(owner, integrity, rotCount, rotable);
         }

@@ -2,10 +2,10 @@
   "id": "TH_Rin",
   "name": "火焰猫燐",
   "author": "Reddo",
-  "description": "加入了来自东方Project的角色，火焰猫燐。",
-  "version": "1.0",
+  "description": "加入了来自东方Project的角色，火焰猫燐。\n拥有101张角色卡牌(含多人游戏卡牌与先古牌)，81张尸体衍生牌、5个新事件、15件新遗物和5瓶新药水以及1个新怪物。",
+  "version": "1.2",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": [ "BaseLib","Patchoulib" ],
+  "dependencies": [ "BaseLib", "Patchoulib" ],
   "affects_gameplay": true
 }

@@ -119,5 +119,11 @@
   "TH_RIN-PRAIRIE_FIRE_POWER.smartDescription": "今、[gold]炎上[/gold]を持つ敵はターン終了時に、他の敵に自身の[gold]炎上[/gold]層数の[blue]{Amount}%[/blue]層の[gold]炎上[/gold]を与える。",
   "TH_RIN-MD_FORM_POWER.title": "耄耋形態",
   "TH_RIN-MD_FORM_POWER.description": "攻撃を受けた次のターン、あなたが与えるダメージが2倍になる。\n層数ターン後に直接死亡する。",
-  "TH_RIN-MD_FORM_POWER.smartDescription": "攻撃を受けた次のターン、あなたが与えるダメージが[blue]2[/blue]倍になる。\n[blue]{Amount}[/blue]ターン後に直接死亡する。"
+  "TH_RIN-MD_FORM_POWER.smartDescription": "攻撃を受けた次のターン、あなたが与えるダメージが[blue]2[/blue]倍になる。\n[blue]{Amount}[/blue]ターン後に直接死亡する。",
+   "TH_RIN-HARDENING_SHELL_POWER.title": "黒竜鱗",
+  "TH_RIN-HARDENING_SHELL_POWER.description": "毎ターン最大[blue]{Amount}[/blue]ライフしか失わない。",
+  "TH_RIN-HARDENING_SHELL_POWER.smartDescription": "毎ターン最大[blue]{Amount}[/blue]ライフしか失わない。",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.title": "伝説の黒竜",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.description": "ターン開始時、[blue]10[/blue]の[gold]筋力[/gold]を得る。\n1回に最大ライフの[blue]25%[/blue]以上のダメージを受けた時、全ての[gold]筋力[/gold]を失い、1ターン[gold]スタン[/gold]する。この閾値はライフが[blue]33%[/blue]減少するごとに半分になる。\n[gold]炎上[/gold]によって失うライフが[blue]75%[/blue]減少する。",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.smartDescription": "頭部破壊に必要な攻撃回数：[blue]{Amount}[/blue]\nターン開始時、[blue]10[/blue]の[gold]筋力[/gold]を得る。\n1回に最大ライフの[blue]25%[/blue]以上のダメージを受けた時、全ての[gold]筋力[/gold]を失い、1ターン[gold]スタン[/gold]する。この閾値はライフが[blue]33%[/blue]減少するごとに半分になる。\n[gold]炎上[/gold]によって失うライフが[blue]75%[/blue]減少する。"
 }

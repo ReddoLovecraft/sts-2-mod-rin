@@ -119,5 +119,11 @@
   "TH_RIN-PRAIRIE_FIRE_POWER.smartDescription": "Now, enemies with [gold]Ignite[/gold] will, at the end of the turn, give other enemies [gold]Ignite[/gold] equal to [blue]{Amount}%[/blue] of their own [gold]Ignite[/gold] stacks.",
   "TH_RIN-MD_FORM_POWER.title": "Elder Form",
   "TH_RIN-MD_FORM_POWER.description": "On the turn after being attacked, the damage you deal is doubled.\nYou will die directly after stacks turns.",
-  "TH_RIN-MD_FORM_POWER.smartDescription": "On the turn after being attacked, the damage you deal is doubled.\nYou will die directly after [blue]{Amount}[/blue] turns."
+  "TH_RIN-MD_FORM_POWER.smartDescription": "On the turn after being attacked, the damage you deal is doubled.\nYou will die directly after [blue]{Amount}[/blue] turns.",
+   "TH_RIN-HARDENING_SHELL_POWER.title": "Black Dragon Scale",
+  "TH_RIN-HARDENING_SHELL_POWER.description": "Lose at most [blue]{Amount}[/blue] HP per turn.",
+  "TH_RIN-HARDENING_SHELL_POWER.smartDescription": "Lose at most [blue]{Amount}[/blue] HP per turn.",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.title": "Legendary Black Dragon",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.description": "At the start of the turn, gain [blue]10[/blue] [gold]Strength[/gold].\nUpon taking a single instance of damage equal to or greater than [blue]25%[/blue] of Max HP, lose all [gold]Strength[/gold] and become [gold]Stunned[/gold] for one turn. This threshold is halved for every [blue]33%[/blue] of HP lost.\nHP loss from [gold]Ignite[/gold] is reduced by [blue]75%[/blue].",
+  "TH_RIN-LEGENDARY_BLACK_DRAGON_POWER.smartDescription": "Head break required hits: [blue]{Amount}[/blue]\nAt the start of the turn, gain [blue]10[/blue] [gold]Strength[/gold].\nUpon taking a single instance of damage equal to or greater than [blue]25%[/blue] of Max HP, lose all [gold]Strength[/gold] and become [gold]Stunned[/gold] for one turn. This threshold is halved for every [blue]33%[/blue] of HP lost.\nHP loss from [gold]Ignite[/gold] is reduced by [blue]75%[/blue]."
 }
