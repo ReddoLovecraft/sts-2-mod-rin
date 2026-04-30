@@ -18,7 +18,7 @@ public class EnergeticCat : RinCardModel
         {
           HoverTipFactory.FromPower<VigorPower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(4)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(5)];
 	public EnergeticCat() : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 	{
 	}

@@ -26,7 +26,7 @@ public class RiseUp : RinCardModel
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		IEnumerable<Creature> enumerable = from c in base.CombatState.GetTeammatesOf(base.Owner.Creature)
-			where c != null && c.IsAlive && c.IsPlayer
+			where c != null && c.IsAlive && c.IsPlayer&&c.Player!=base.Owner
 			select c;
 		foreach (Creature item in enumerable)
 		{

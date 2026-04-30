@@ -11,7 +11,7 @@ public sealed class BlackDragonEventEncounter : CustomEncounterModel
 {
 	public override IEnumerable<MonsterModel> AllPossibleMonsters => [ModelDb.Monster<BlackDargon>()];
 
-	public override bool IsValidForAct(ActModel act) => true;
+	public override bool IsValidForAct(ActModel act) => false;
 
 	public override bool IsWeak => false;
 

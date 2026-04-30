@@ -18,7 +18,7 @@ public class VigorBurst : RinCardModel
         {
           HoverTipFactory.FromPower<VigorPower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Power", 6),new CardsVar(1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Power", 5),new CardsVar(1)];
 	public VigorBurst() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 	{
 	}

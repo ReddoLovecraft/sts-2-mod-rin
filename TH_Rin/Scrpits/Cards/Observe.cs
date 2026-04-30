@@ -19,7 +19,7 @@ public class Observe : RinCardModel
           HoverTipFactory.FromPower<StrengthPower>(),
           HoverTipFactory.FromPower<DexterityPower>()
         });
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
 	public Observe() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 	{
 	}
@@ -37,7 +37,7 @@ public class Observe : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Cards.UpgradeValueBy(2);
+		DynamicVars.Cards.UpgradeValueBy(1);
 	}
 }
 

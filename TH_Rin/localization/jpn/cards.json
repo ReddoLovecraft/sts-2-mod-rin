@@ -98,7 +98,7 @@
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.description": "[gold]捨て札置き場[/gold]から最大{Cards:diff()}枚のカードを選んで手札に戻す。",
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.selectionScreenPrompt": "[gold]手札[/gold]に戻すカードを選択",
 	"TH_RIN-CORPSE_LOVE.title": "氷恋",
-	"TH_RIN-CORPSE_LOVE.description": "敵に{Cards:diff()}層の[gold]脆弱[/gold]と[gold]弱体[/gold]を与える。\n[gold]死体[/gold]を持っている場合、次の{Cards:diff()}ターンの間、その敵に対する[gold]脆弱[/gold]と[gold]弱体[/gold]の効果が2倍になる。",
+	"TH_RIN-CORPSE_LOVE.description": "敵に{Power:diff()}層の[gold]脆弱[/gold]と[gold]弱体[/gold]を与える。\n[gold]死体[/gold]を持っている場合、次の{Cards:diff()}ターンの間、その敵に対する[gold]脆弱[/gold]と[gold]弱体[/gold]の効果が2倍になる。",
 	"TH_RIN-LYCORIS.title": "彼岸花咲く",
 	"TH_RIN-LYCORIS.description": "[gold]怨霊[/gold]を1個[gold]消費[/gold]するたび、最大ライフを{Cards:diff()}増やす。",
 	"TH_RIN-BONE_MUCH.title": "骨々累累",

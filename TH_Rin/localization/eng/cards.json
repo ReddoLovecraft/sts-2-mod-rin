@@ -99,7 +99,7 @@
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.description": "Choose up to {Cards:diff()} cards from your [gold]Discard Pile[/gold] and return them to your hand.",
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.selectionScreenPrompt": "Choose cards to return to your [gold]Hand[/gold].",
 	"TH_RIN-CORPSE_LOVE.title": "Corpse Love",
-	"TH_RIN-CORPSE_LOVE.description": "Apply {Cards:diff()} [gold]Vulnerable[/gold] and [gold]Weak[/gold] to an enemy.\nIf you have a [gold]Corpse[/gold], for the next {Cards:diff()} turns, [gold]Vulnerable[/gold] and [gold]Weak[/gold] on that enemy are twice as effective.",
+	"TH_RIN-CORPSE_LOVE.description": "Apply {Power:diff()} [gold]Vulnerable[/gold] and [gold]Weak[/gold] to an enemy.\nIf you have a [gold]Corpse[/gold], for the next {Cards:diff()} turns, [gold]Vulnerable[/gold] and [gold]Weak[/gold] on that enemy are twice as effective.",
 	"TH_RIN-LYCORIS.title": "Lycoris Blooms",
 	"TH_RIN-LYCORIS.description": "Whenever you [gold]consume a Wraith[/gold], increase your Max HP by {Cards:diff()}.",
 	"TH_RIN-BONE_MUCH.title": "Bone Pile",

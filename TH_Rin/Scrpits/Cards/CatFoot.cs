@@ -12,8 +12,8 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class CatFoot : RinCardModel
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
-	public CatFoot() : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.None)
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(3)];
+	public CatFoot() : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.None)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

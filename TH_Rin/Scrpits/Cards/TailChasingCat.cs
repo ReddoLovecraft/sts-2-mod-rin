@@ -18,7 +18,7 @@ public class TailChasingCat : RinCardModel
          HoverTipFactory.Static(StaticHoverTip.ReplayStatic)
         });
     protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(1)];
-	public TailChasingCat() : base(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+	public TailChasingCat() : base(3, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 	{
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

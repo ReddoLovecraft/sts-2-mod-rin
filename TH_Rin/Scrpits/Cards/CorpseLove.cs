@@ -28,7 +28,7 @@ public class CorpseLove : RinCardModel
 			return barrow != null && barrow.CorpseCards.Count > 0;
 		}
 	}
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(2),new DynamicVar("Power",1)];
 	public CorpseLove() : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 	{
 	}
@@ -44,7 +44,7 @@ public class CorpseLove : RinCardModel
 	}
 	protected override void OnUpgrade()
 	{
-		this.DynamicVars.Cards.UpgradeValueBy(1);
+		this.DynamicVars["Power"].UpgradeValueBy(1);
 	}
 }
 

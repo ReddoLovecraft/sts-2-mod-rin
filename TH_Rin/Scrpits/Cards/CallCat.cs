@@ -14,7 +14,7 @@ namespace TH_Rin.Scrpits.Cards
 public class CallCat : RinCardModel
 {
 	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1m,ValueProp.Move),new CardsVar(8)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1m,ValueProp.Move),new CardsVar(6)];
 	public CallCat() : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 	{
 	}

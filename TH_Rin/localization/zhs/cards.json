@@ -19,7 +19,6 @@
 	"TH_RIN-CAT_CAR_COLLISION.description": "对所有敌人造成等同于你当前[gold]格挡[/gold]值点伤害。\n在你的下个回合开始时获得等同于当前[gold]格挡[/gold]值的[gold]格挡[/gold]，然后失去你的所有[gold]格挡[/gold]。\n如果你本回合打出过同名卡牌，则不再失去[gold]格挡[/gold]且先获得之前失去的[gold]格挡[/gold]。",
 	"TH_RIN-SPLEEN_EATER.title": "恨灵「脾脏蛀食者」",
 	"TH_RIN-SPLEEN_EATER.description": "造成{Damage:diff()}点伤害。\n如果你有[gold]怨灵[/gold]或者造成了未被[gold]格挡[/gold]的伤害，给予{Cards:diff()}层[gold]易伤[/gold]和[gold]虚弱[/gold]。",
-	
 	"TH_RIN-FAST_CLAW.title": "迅爪",
 	"TH_RIN-FAST_CLAW.description": "造成{Damage:diff()}点伤害。\n抽{Cards:diff()}张牌。",
 	"TH_RIN-SHARPEN_CLAW.title": "磨锐利爪",
@@ -99,7 +98,7 @@
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.description": "从[gold]弃牌堆[/gold]中选择至多{Cards:diff()}张牌，将其放回你的手中。",
 	"TH_RIN-GHOST_MOVING_TECHNIQUE.selectionScreenPrompt": "选择要放回[gold]手牌[/gold]的卡牌。",
 	"TH_RIN-CORPSE_LOVE.title": "冰恋",
-	"TH_RIN-CORPSE_LOVE.description": "给予敌人{Cards:diff()}层[gold]易伤[/gold]和[gold]虚弱[/gold]。\n如果你有[gold]尸体[/gold]，则在接下来的{Cards:diff()}回合内，该敌人身上的[gold]易伤[/gold]与[gold]虚弱[/gold]效率翻倍。",
+	"TH_RIN-CORPSE_LOVE.description": "给予敌人{Power:diff()}层[gold]易伤[/gold]和[gold]虚弱[/gold]。\n如果你有[gold]尸体[/gold]，则在接下来的{Cards:diff()}回合内，该敌人身上的[gold]易伤[/gold]与[gold]虚弱[/gold]效率翻倍。",
 	"TH_RIN-LYCORIS.title": "彼岸花开",
 	"TH_RIN-LYCORIS.description": "你每[gold]消耗[/gold]一个[gold]怨灵[/gold]，就将你的最大生命值提升{Cards:diff()}点。",
 	"TH_RIN-BONE_MUCH.title": "嶙嶙白骨",
