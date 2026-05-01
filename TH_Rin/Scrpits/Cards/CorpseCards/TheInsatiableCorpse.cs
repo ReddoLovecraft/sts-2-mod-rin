@@ -33,7 +33,7 @@ public class TheInsatiableCorpse : CorpseCardModel
 	}
 	 public override async Task TriggerWhenCombatStart()
     {
-        int deadLine=(this.DynamicVars["Power"].IntValue/100)*Owner.Creature.MaxHp;
+        int deadLine=this.DynamicVars["Power"].IntValue*Owner.Creature.MaxHp/100;
 		foreach(Creature mos in Owner.Creature.CombatState.HittableEnemies.ToList())
 		{
 			if(mos.MaxHp<=deadLine)

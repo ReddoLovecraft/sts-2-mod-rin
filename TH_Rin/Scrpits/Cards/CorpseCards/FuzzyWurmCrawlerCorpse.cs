@@ -1,6 +1,6 @@
-using System.Runtime.Serialization.Json;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -34,24 +34,35 @@ public class FuzzyWurmCrawlerCorpse : CorpseCardModel
 		DynamicVars["Power"].BaseValue = 7m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
-	bool flag=false;	
-        public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
-        {
-			if(side==CombatSide.Enemy)
-			{
-				return;
-			}
-            if(!flag)
-            {
-                await PowerCmd.Apply<StrengthPower>(Owner.Creature,this.DynamicVars["Power"].IntValue,Owner.Creature,this);
-            }
-			else flag=false;
-        }
-		public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+	public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
 	{
-		if (cardPlay.Card.Owner == base.Owner&&cardPlay.Card.Type==CardType.Attack)
+		if (side == CombatSide.Enemy)
 		{
-			flag=true;
+			return;
+		}
+
+		Player owner = Owner;
+		if (owner == null)
+		{
+			return;
+		}
+
+		CombatState? combatState = owner.Creature?.CombatState;
+		if (combatState == null)
+		{
+			return;
+		}
+
+		int roundNumber = combatState.RoundNumber;
+		bool playedAttackThisTurn = CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+			e.RoundNumber == roundNumber &&
+			e.CurrentSide == CombatSide.Player &&
+			e.Actor == owner.Creature &&
+			e.CardPlay.Card.Type == CardType.Attack);
+
+		if (!playedAttackThisTurn)
+		{
+			await PowerCmd.Apply<StrengthPower>(owner.Creature, this.DynamicVars["Power"].IntValue, owner.Creature, this);
 		}
 	}
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

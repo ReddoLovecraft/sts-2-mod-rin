@@ -1,6 +1,6 @@
-using System.Runtime.Serialization.Json;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using System.Linq;
 using TH_Rin.Scripts.Main;
 
 namespace TH_Rin.Scrpits.Cards
@@ -54,26 +55,34 @@ public class PhantasmalGardenerCorpse : CorpseCardModel
 			return;
 		}
         await CreatureCmd.GainBlock(Owner.Creature, this.DynamicVars.HpLoss.IntValue,ValueProp.Unpowered,null);
-		flag=false;
         await Task.CompletedTask;
 	}
-	private bool flag=false;
-	public override async Task TriggerWhenCombatStart()
-    {
-             this.flag=false;
-    }
 	public override async Task TriggerWhenTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
           if (player != base.Owner)
             {
                 return;
             }
-			if(flag)
+			CombatState? combatState = player.Creature?.CombatState;
+			if (combatState == null)
 			{
-				await PowerCmd.Apply<StrengthPower>(base.Owner.Creature, this.DynamicVars["Power"].IntValue,base.Owner.Creature, this);
+				return;
 			}
-			else
-			flag=true;
+
+			int previousRoundNumber = combatState.RoundNumber - 1;
+			if (previousRoundNumber < 1)
+			{
+				return;
+			}
+
+			bool tookUnblockedDamageLastRound = CombatManager.Instance.History.Entries
+				.OfType<DamageReceivedEntry>()
+				.Any(e => e.Receiver == player.Creature && e.RoundNumber == previousRoundNumber && e.Result.UnblockedDamage > 0);
+
+			if (!tookUnblockedDamageLastRound)
+			{
+				await PowerCmd.Apply<StrengthPower>(base.Owner.Creature, this.DynamicVars["Power"].IntValue, base.Owner.Creature, this);
+			}
 			
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

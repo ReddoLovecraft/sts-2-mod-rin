@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.Serialization.Json;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -52,15 +53,13 @@ public class SoulFyshCorpse : CorpseCardModel
             {
                 return;
             }
-			count++;
-			if(count>=3)
+			CombatState combatState = player.Creature.CombatState;
+			if (combatState.RoundNumber % 3 == 0)
 			{
-				await PowerCmd.Apply<IntangiblePower>(Owner.Creature, this.DynamicVars["Power"].IntValue,Owner.Creature, this);
-				count=0;
+				await PowerCmd.Apply<IntangiblePower>(Owner.Creature, this.DynamicVars["Power"].IntValue, Owner.Creature, this);
 			}
 			
     }
-	int count=0;
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		

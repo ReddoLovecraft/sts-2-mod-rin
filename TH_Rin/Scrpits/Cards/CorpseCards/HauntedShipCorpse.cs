@@ -48,7 +48,12 @@ public class HauntedShipCorpse : CorpseCardModel
         }
 		public  override void TriggerWhenRemove()
     {
-        PlayerCmd.GainGold(this.DynamicVars.Cards.IntValue,Owner);
+		Player owner = Owner;
+		if (owner == null)
+		{
+			return;
+		}
+        PlayerCmd.GainGold(this.DynamicVars.Cards.IntValue, owner);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

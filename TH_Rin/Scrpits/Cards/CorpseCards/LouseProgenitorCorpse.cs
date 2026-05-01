@@ -1,6 +1,6 @@
-using System.Runtime.Serialization.Json;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using System.Linq;
 using TH_Rin.Scripts.Main;
 
 namespace TH_Rin.Scrpits.Cards
@@ -33,12 +34,7 @@ public class LouseProgenitorCorpse : CorpseCardModel
 		DynamicVars["Power"].BaseValue = 20m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
-	private bool flag=false;
-	 public override async Task TriggerWhenCombatStart()
-        {
-          flag=true;
-        }
-		public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+	public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
   	{
           if (!CombatManager.Instance.IsInProgress)
           {
@@ -55,12 +51,15 @@ public class LouseProgenitorCorpse : CorpseCardModel
               await Task.CompletedTask;
               return;
           }
-		  if(!flag)
-          {
-              await Task.CompletedTask;
-              return;
-          }
-		  flag=false;
+
+		  bool alreadyTriggered = CombatManager.Instance.History.Entries
+			  .OfType<DamageReceivedEntry>()
+			  .Any(e => e.Receiver == Owner.Creature && e.Dealer != Owner.Creature);
+		  if (alreadyTriggered)
+		  {
+			  await Task.CompletedTask;
+			  return;
+		  }
           await CreatureCmd.GainBlock(base.Owner.Creature,this.DynamicVars["Power"].IntValue,ValueProp.Unpowered, null);
  	 }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

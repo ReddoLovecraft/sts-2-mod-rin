@@ -34,7 +34,12 @@ public class WriggleCorpse : CorpseCardModel
 	}
 	 public override void TriggerWhenRemove()
     {
-        CreatureCmd.Heal(Owner.Creature, DynamicVars["Power"].IntValue);
+		Player owner = Owner;
+		if (owner?.Creature == null)
+		{
+			return;
+		}
+        CreatureCmd.Heal(owner.Creature, DynamicVars["Power"].IntValue);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

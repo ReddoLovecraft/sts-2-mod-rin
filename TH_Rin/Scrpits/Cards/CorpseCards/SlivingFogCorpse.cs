@@ -28,19 +28,15 @@ public class SlivingFogCorpse : CorpseCardModel
 	{
 		DynamicVars["Power"].BaseValue = 6m * GetMutilplier();
 	}
-	private int dmg=0;
-	 public override async Task TriggerWhenCombatStart()
-        {
-            dmg=this.DynamicVars["Power"].IntValue;
-        }
-		   public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+	public override async Task TriggerWhenTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
         {
 			  if (side != base.Owner.Creature.Side)
             {
                 return;
             }
-            await CreatureCmd.Damage(choiceContext, Owner.Creature.CombatState.HittableEnemies, new DamageVar(dmg,ValueProp.Unpowered), base.Owner.Creature);
-			dmg+=this.DynamicVars["Power"].IntValue;
+			int baseDamage = this.DynamicVars["Power"].IntValue;
+			int damage = baseDamage * Owner.Creature.CombatState.RoundNumber;
+            await CreatureCmd.Damage(choiceContext, Owner.Creature.CombatState.HittableEnemies, new DamageVar(damage,ValueProp.Unpowered), base.Owner.Creature);
         }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

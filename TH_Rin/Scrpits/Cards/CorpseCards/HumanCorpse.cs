@@ -3,6 +3,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -33,7 +34,12 @@ public class HumanCorpse : CorpseCardModel
 	}	
 	public  override void TriggerWhenRemove()
     {
-            CreatureCmd.GainMaxHp(Owner.Creature, this.DynamicVars["Power"].IntValue);
+			Player owner = Owner;
+			if (owner?.Creature == null)
+			{
+				return;
+			}
+            CreatureCmd.GainMaxHp(owner.Creature, this.DynamicVars["Power"].IntValue);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
