@@ -46,7 +46,7 @@ public static class BarrowSimpleSelectClickPatch
 			return;
 		}
 
-		Tools.RemoveFromBarrow(barrow, corpseCard);
+		await Tools.RemoveFromBarrowAsync(barrow, corpseCard);
 
 		if (barrow.CorpseCards.Count == 0)
 		{

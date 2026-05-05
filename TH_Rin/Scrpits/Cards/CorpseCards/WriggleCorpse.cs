@@ -32,14 +32,14 @@ public class WriggleCorpse : CorpseCardModel
 		DynamicVars["Power"].BaseValue = 6m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
-	 public override void TriggerWhenRemove()
+	 public override async Task TriggerWhenRemove()
     {
 		Player owner = Owner;
 		if (owner?.Creature == null)
 		{
 			return;
 		}
-        CreatureCmd.Heal(owner.Creature, DynamicVars["Power"].IntValue);
+        await CreatureCmd.Heal(owner.Creature, DynamicVars["Power"].IntValue);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

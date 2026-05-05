@@ -3,6 +3,7 @@ using BaseLib.Patches.Content;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -91,9 +92,9 @@ namespace TH_Rin.Scripts.Main
             this.Rotable=Rotable;
             RefreshCorpseVars();
         }
-        public virtual void TriggerWhenRemove()
+        public virtual Task TriggerWhenRemove()
         {
-            
+            return Task.CompletedTask;
         }
         public virtual async Task TriggerWhenCombatStart()
         {
@@ -167,7 +168,7 @@ namespace TH_Rin.Scripts.Main
             this.RotCount--;
             if(RotCount<=0)
             {
-	            Tools.RemoveFromBarrow(this);
+	            TaskHelper.RunSafely(Tools.RemoveFromBarrowAsync(this));
             }
         }
        

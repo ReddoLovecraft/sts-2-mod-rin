@@ -296,7 +296,12 @@ namespace TH_Rin.Scripts.Main
 
         public static void RemoveFromBarrow(IBarrowLike barrow, CorpseCardModel card)
         {
-            card.TriggerWhenRemove();
+            TaskHelper.RunSafely(RemoveFromBarrowAsync(barrow, card));
+        }
+
+        public static async Task RemoveFromBarrowAsync(IBarrowLike barrow, CorpseCardModel card)
+        {
+            await card.TriggerWhenRemove();
             barrow.CorpseCards.Remove(card);
 
             NCard nCard = NCard.Create(card);
@@ -318,6 +323,11 @@ namespace TH_Rin.Scripts.Main
         
         public static void RemoveFromBarrow(CorpseCardModel card)
         {
+            TaskHelper.RunSafely(RemoveFromBarrowAsync(card));
+        }
+
+        public static async Task RemoveFromBarrowAsync(CorpseCardModel card)
+        {
             Player? owner = null;
             try
             {
@@ -337,7 +347,7 @@ namespace TH_Rin.Scripts.Main
             {
                 return;
             }
-            RemoveFromBarrow(barrow, card);
+            await RemoveFromBarrowAsync(barrow, card);
         }
 
         public static void AddCorpseToBarrow(Player owner, CorpseCardModel corpseCard)

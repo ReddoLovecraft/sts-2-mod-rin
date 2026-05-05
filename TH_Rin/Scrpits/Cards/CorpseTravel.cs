@@ -20,8 +20,8 @@ namespace TH_Rin.Scrpits.Cards
 [Pool(typeof(RinCardPool))]
 public class CorpseTravel : RinCardModel
 {
-	   public override bool GainsBlock => true;
-	   public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+	 
+	public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
  	protected override IEnumerable<IHoverTip> ExtraHoverTips => (new IHoverTip[2]
         {
           Patchoulib.Scrpits.Main.Tools.GetStaticKeyword("Corpse"),

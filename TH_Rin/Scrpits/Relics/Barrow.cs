@@ -204,6 +204,7 @@ public class Barrow : CustomRelicModel,IRightCilckable,IBarrowLike
 	 }
 	 public override async Task AfterRoomEntered(AbstractRoom room)
 	{
+		EnsureCorpseCardOwners(Owner);
 		for (int i = CorpseCards.Count - 1; i >= 0; i--)
 		{
 			CorpseCardModel corpseCard = CorpseCards[i];
@@ -214,7 +215,7 @@ public class Barrow : CustomRelicModel,IRightCilckable,IBarrowLike
 			corpseCard.RotCount--;
 			if (corpseCard.RotCount <= 0)
 			{
-				Tools.RemoveFromBarrow(this, corpseCard);
+				await Tools.RemoveFromBarrowAsync(this, corpseCard);
 			}
 		}
 		await Task.CompletedTask;

@@ -46,14 +46,14 @@ public class HauntedShipCorpse : CorpseCardModel
 				await PowerCmd.Apply<WeakPower>(mos, DynamicVars["Power"].BaseValue,mos,this);
 		   }
         }
-		public  override void TriggerWhenRemove()
+		public  override async Task TriggerWhenRemove()
     {
 		Player owner = Owner;
 		if (owner == null)
 		{
 			return;
 		}
-        PlayerCmd.GainGold(this.DynamicVars.Cards.IntValue, owner);
+        await PlayerCmd.GainGold(this.DynamicVars.Cards.IntValue, owner);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

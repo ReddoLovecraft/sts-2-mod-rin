@@ -33,7 +33,7 @@ public class TwoTailedRatCorpse : CorpseCardModel
 		DynamicVars["Power"].BaseValue = 8m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}	
-	public  override void TriggerWhenRemove()
+	public  override async Task TriggerWhenRemove()
     {
 		Player owner = Owner;
 		if (owner?.Creature == null)
@@ -41,9 +41,9 @@ public class TwoTailedRatCorpse : CorpseCardModel
 			return;
 		}
 		if(owner.Creature.CurrentHp>=owner.Creature.MaxHp)
-        	CreatureCmd.GainMaxHp(owner.Creature, this.DynamicVars["Power"].IntValue);
+        	await CreatureCmd.GainMaxHp(owner.Creature, this.DynamicVars["Power"].IntValue);
 		else
-			CreatureCmd.Heal(owner.Creature, this.DynamicVars["Power"].IntValue);
+			await CreatureCmd.Heal(owner.Creature, this.DynamicVars["Power"].IntValue);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{

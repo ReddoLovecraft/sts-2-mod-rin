@@ -33,14 +33,14 @@ public class SmallOvicopterCorpse : CorpseCardModel
 		DynamicVars["Power"].BaseValue = 4m * GetMutilplier();
 		DynamicVars.Cards.BaseValue = RotCount;
 	}
-		public  override void TriggerWhenRemove()
+		public  override async Task TriggerWhenRemove()
     {
 			Player owner = Owner;
 			if (owner?.Creature == null)
 			{
 				return;
 			}
-            CreatureCmd.Heal(owner.Creature, this.DynamicVars["Power"].IntValue);
+            await CreatureCmd.Heal(owner.Creature, this.DynamicVars["Power"].IntValue);
     }
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
