@@ -1,5 +1,8 @@
+using System.Linq;
 using Godot;
 using HarmonyLib;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models.Monsters;
@@ -9,6 +12,7 @@ using MegaCrit.Sts2.Core.Saves;
 using System.Reflection;
 using MegaCrit.Sts2.Core.Commands;
 using TH_Rin.Scrpits.Cards;
+using TH_Rin.Scrpits.Powers;
 
 namespace TH_Rin.Scripts.Main
 {
@@ -28,7 +32,35 @@ namespace TH_Rin.Scripts.Main
 		_harmony = new Harmony("TH_Rin");
 		_harmony.PatchAll();
 		InitTools();
+		RegisterPatchoulibIntegrations();
 		Log.Debug("Rin mod has been loaded successfully");
+	}
+
+	private static void RegisterPatchoulibIntegrations()
+	{
+		IgniteIntegration.Register(async ignite =>
+		{
+			Creature owner = ignite.Owner;
+			CombatState? state = owner.CombatState;
+			if (state == null)
+			{
+				return;
+			}
+
+			bool hasWildfire = state.Creatures.Any(c => c != null && c.IsAlive && c.HasPower<WildfireInJulyPower>());
+			if (hasWildfire)
+			{
+				return;
+			}
+
+			IntegrityPower? integrity = owner.GetPower<IntegrityPower>();
+			if (integrity == null)
+			{
+				return;
+			}
+
+			await integrity.TriggerLostMoreAmount(5);
+		});
 	}
     public static bool InitTools()
 	{
